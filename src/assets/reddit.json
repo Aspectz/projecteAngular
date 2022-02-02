@@ -1,0 +1,119 @@
+{
+  "communities" : {
+    "Memes" : {
+      "name" : "Memes",
+      "posts" : {
+        "-Mr6WnvnExcKeKSgRsWL" : {
+          "author" : "pruebas",
+          "comments" : {
+            "-Mr6X6660tvKtpiH89e1" : {
+              "comment" : "Que bueno!!! Jajajajajaja se lo voy a enseñar a todos mis amigos. \nQue funny willyrex.",
+              "date" : "17/12/2021",
+              "user" : "davidpa"
+            }
+          },
+          "community" : "Memes",
+          "file" : "http://res.cloudinary.com/dtwtp2vwv/image/upload/v1639730068/mnrqq7fzadrisj7xgodk.png",
+          "title" : "Willyrex Monalisa",
+          "upvotes" : "2"
+        }
+      }
+    },
+    "Playrust" : {
+      "name" : "Playrust",
+      "posts" : {
+        "-Mr6Xrmo42QhTsbP7PAY" : {
+          "author" : "playrust",
+          "comments" : {
+            "-Mr6Y7i3Alt3yAKmup7f" : {
+              "comment" : "Wow they're so beautiful. Im spending all my money on these skins.",
+              "date" : "17/12/2021",
+              "user" : "davidpa"
+            },
+            "-Mr6YSUs1v0LxYFisZCh" : {
+              "comment" : "Thanks for your support guys! We have lots of surprises for you.",
+              "date" : "17/12/2021",
+              "user" : "playrust"
+            },
+            "-Mr6Y_jpnDqFu9LLoGVu" : {
+              "comment" : "I dont really like them. Pretty expensive for this trash game lmao!",
+              "date" : "17/12/2021",
+              "user" : "pruebas"
+            }
+          },
+          "community" : "Playrust",
+          "file" : "http://res.cloudinary.com/dtwtp2vwv/image/upload/v1639730346/xqpmdwjt0ws2xr7rgvny.png",
+          "title" : "The new skins are pretty cool!",
+          "upvotes" : "2"
+        },
+        "-Mr6Yl9otOjEQ_QjkHum" : {
+          "author" : "playrust",
+          "community" : "Playrust",
+          "file" : "http://res.cloudinary.com/dtwtp2vwv/image/upload/v1639730581/fiwfld65ub7et0yzbusy.png",
+          "title" : "Tc need more taxes",
+          "upvotes" : "2"
+        },
+        "-Mr8pIyEqpVGaWXsXcqX" : {
+          "author" : "playrust",
+          "community" : "Playrust",
+          "file" : "http://res.cloudinary.com/dtwtp2vwv/image/upload/v1639768735/mnghoh8h2cxzjoho6f0q.jpg",
+          "title" : "gdsfgsdg",
+          "upvotes" : "2"
+        }
+      }
+    },
+    "RustInfo" : {
+      "name" : "RustInfo",
+      "posts" : {
+        "-Mr6m9an-FM8W1OExCZB" : {
+          "author" : "playrust",
+          "comments" : {
+            "-Mr6mURLcnDOZ23X3JRV" : {
+              "comment" : "We would like that our community to give us a feedback of the game",
+              "date" : "17/12/2021",
+              "user" : "playrust"
+            },
+            "-Mr6tfFDgiak3FHmRZyZ" : {
+              "comment" : "It would be awesome if u could  add new guns to the game. It's been 4 years since the last gun update",
+              "date" : "17/12/2021",
+              "user" : "pruebas"
+            }
+          },
+          "community" : "RustInfo",
+          "file" : "http://res.cloudinary.com/dtwtp2vwv/image/upload/v1639734356/syxulghaht4latp2ijnu.png",
+          "title" : "Comment your ideas here",
+          "upvotes" : "2"
+        }
+      }
+    }
+  },
+  "users" : {
+    "4hW7nPlU2ZgJooADcVSPm83F5DL2" : {
+      "nickname" : "juanito123"
+    },
+    "6O4Be3sx4lcsDtOwa9amT7sdA0A2" : {
+      "email" : "davidpa@gmail.com",
+      "nickname" : "davidpa"
+    },
+    "AupSECbcREPN6uiyFWp0hSK7t7p2" : {
+      "communities" : {
+        "Memes" : "Memes",
+        "Playrust" : "Playrust",
+        "RustInfo" : "RustInfo"
+      },
+      "email" : "playrust@yopmail.com",
+      "nickname" : "playrust"
+    },
+    "k3RfGYVI5RgfZnDwNZhefYPiXVt1" : {
+      "email" : "asdf@asdf.com",
+      "nickname" : "xxx"
+    },
+    "xV95Kof79dSLDMYSYLScxalwJq03" : {
+      "communities" : {
+        "Memes" : "Memes"
+      },
+      "email" : "pruebas@yopmail.com",
+      "nickname" : "pruebas"
+    }
+  }
+}
