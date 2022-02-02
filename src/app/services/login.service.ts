@@ -41,7 +41,10 @@ export class LoginService {
 
 
   isLogged():boolean{
-    if(localStorage.getItem('nickname')==""){
+    
+    
+    
+    if(localStorage.getItem('nickname')==null){
       return false;
     }
     return true;
