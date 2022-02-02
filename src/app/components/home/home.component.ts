@@ -20,10 +20,7 @@ export class HomeComponent implements OnInit {
     this.communitiesService.getCommunities().subscribe(datos=>{
       this.communities=Object.values(datos);
       for(let comm of this.communities){
-          const baseUrl=`https://projectjs-b6bfe-default-rtdb.europe-west1.firebasedatabase.app/communities/${comm.name}.json`;
-          this.postsService.getPosts(baseUrl).subscribe(posts=>{
-            console.log("Posts:",posts);
-            
+          this.postsService.getPosts(comm.name).subscribe(posts=>{
             this.posts_aux.push(posts);
             this.posts=this.posts_aux?.flat();
               

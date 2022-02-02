@@ -3,7 +3,11 @@
     <ul>
       <li><a id="home_link" [routerLink]="['home']" routerLinkActive="active">Home</a></li>
       <input type="text" placeholder="Search.." id="searchbox" />
-      <li><a id="register_link" [routerLink]="['register']" routerLinkActive="active">Register</a></li>
-      <li><a id="login_link" [routerLink]="['login']" routerLinkActive="active">Log In</a></li>
+      <li *ngIf="!isLogged"><a id="register_link" [routerLink]="['register']"  routerLinkActive="active">Register</a></li>
+      <li *ngIf="!isLogged"><a id="login_link" [routerLink]="['login']"   routerLinkActive="active">Log In</a></li>
+      <li *ngIf="isLogged"><a id="nickname">{{nickname}}</a></li>
+      <li *ngIf="isLogged" ><a id="create_post" >Create Post</a></li>
+      <li *ngIf="isLogged" ><a id="logout" (click)="logout()" >Log Out</a></li>
+
     </ul>
   </div>

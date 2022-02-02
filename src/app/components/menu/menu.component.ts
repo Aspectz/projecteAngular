@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  
+  isLogged:boolean=false;
+  nickname:string | undefined;
+  constructor(private login: LoginService) { }
+
 
   ngOnInit(): void {
+    this.isLogged=this.login.isLogged();
+    this.login.logged.subscribe(log=> { this.isLogged=log; this.nickname=this.isLogged ? localStorage.getItem("nickname")!: "" });    
+  }
+
+
+  logout(){
+    this.login.logout();
   }
 
 }

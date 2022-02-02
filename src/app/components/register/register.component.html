@@ -2,34 +2,34 @@
     <div class="container-fluid h-custom">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-md-8 col-lg-6 col-xl-4">
-          <form id="form_register">
+          <form id="form_register" (ngSubmit)="submit()">
             <div class="form-outline mb-4 mt-5">
             <label class="form-label" for="email">NickName</label>
-            <input type="text" name="nickname" id="nickname" class="form-control form-control-lg"
+            <input type="text" name="nickname"  [(ngModel)]="nickname" id="nickname" class="form-control form-control-lg"
               placeholder="Choose a nickname" />
               <div id="nickerror"></div>
             
           </div>
             <!-- Email input -->
             <div class="form-outline mb-4">
-            <label class="form-label" for="email"> Email address</label>
+            <label class="form-label"   for="email"> Email address</label>
               <input type="email" name="email" class="form-control form-control-lg"
-                placeholder="Enter a valid email address" />
+                placeholder="Enter a valid email address"  [(ngModel)]="email"/>
                 <div id="emailerror"></div>
             </div>
   
             <!-- Password input -->
             <div class="form-outline mb-3">
-            <label class="form-label" id="passwordLabel" for="password">Password</label>
+            <label class="form-label" id="passwordLabel"  for="password">Password</label>
               <input type="password" name="password" id="password" class="form-control form-control-lg"
-                placeholder="Enter password" />
+                placeholder="Enter password"  [(ngModel)]="password"/>
              
             </div>
             <div class="form-outline mb-3">
             <label class="form-label" for="password2">Password</label>
-              <input type="password" name="password2" id="password2" class="form-control form-control-lg"
+              <input type="password" name="password2"  [(ngModel)]="password2" id="password2" class="form-control form-control-lg" 
                 placeholder="Enter password" />
-              
+                <p *ngIf="passwordError">Las contraseñas deben ser iguales </p>
             </div>
             <div class="text-center text-lg-start mt-4 pt-2">
               <button type="submit"  class="btn btn-primary btn-lg"

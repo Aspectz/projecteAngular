@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IUser } from 'src/app/interfaces/i-user';
+import {  IUserFirebaseAuth } from 'src/app/interfaces/i-user';
 import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
 @Component({
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   }
 
   submit():void{
-    let usuario:IUser={email:this.email,password:this.password};
+    let usuario:IUserFirebaseAuth={email:this.email,password:this.password};
     this.loginService.login(usuario).subscribe({
       next:user=>{
         this.router.navigate(['/home']);

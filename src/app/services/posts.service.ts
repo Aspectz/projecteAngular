@@ -12,8 +12,8 @@ export class PostsService {
   
   constructor(private http:HttpClient) { }
 
-  getPosts(url:string):Observable<IPost[]>{
-    return this.http.get<{[key:string]:IPost}>(url).pipe(
+  getPosts(comm:string):Observable<IPost[]>{
+    return this.http.get<{[key:string]:IPost}>(`https://projectjs-b6bfe-default-rtdb.europe-west1.firebasedatabase.app/communities/${comm}.json`).pipe(
       map(communityObj => Object.entries(communityObj['posts'])),
       map(communityArray => communityArray.map(post => { post[1].id = post[0];
       return post[1] })));
