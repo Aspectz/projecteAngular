@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.communitiesService.getCommunities().subscribe(datos=>{
+      
       this.communities=Object.values(datos);
       for(let comm of this.communities){
           this.postsService.getPosts(comm.name).subscribe(posts=>{

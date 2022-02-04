@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {  IUserFirebaseAuth } from 'src/app/interfaces/i-user';
 import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,21 +10,46 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  //DIU Q EXISTIRA AMB EL !
+  public loginForm!:FormGroup;
   public email='';
   public password=''
 
-  constructor(private loginService : LoginService, private router:Router) {}
+  constructor(private loginService : LoginService, private router:Router,private formBuilder: FormBuilder) {
+    this.crearForm();
+  }
 
   ngOnInit(): void {
   }
 
   submit():void{
-    let usuario:IUserFirebaseAuth={email:this.email,password:this.password};
+    let usuario:IUserFirebaseAuth={email:this.loginForm.get("email")?.value,password:this.loginForm.get("password")?.value};
+    console.log(usuario);
+    
     this.loginService.login(usuario).subscribe({
       next:user=>{
         this.router.navigate(['/home']);
       }
     });
+  }
+
+
+//Asi es faria el validador personalitzat
+
+  crearForm(){
+    this.loginForm=this.formBuilder.group({
+      email:['email',[Validators.required,Validators.email]],
+      password:['password',[Validators.required,]]
+    });
+  }
+  get emailNotValid(){
+    if(this.loginForm.get('email')?.invalid && this.loginForm.get('email')?.touched){
+      return "is-invalid"
+    }
+    if(this.loginForm.get('email')?.valid && this.loginForm.get('email')?.touched){
+      return "is-valid";
+    }
+    return "";
   }
 
 }

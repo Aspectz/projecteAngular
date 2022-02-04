@@ -79,6 +79,8 @@ export class LoginService {
     )
   }  
 
+
+
   logout(){
     localStorage.removeItem("localId");
     localStorage.removeItem("email");
