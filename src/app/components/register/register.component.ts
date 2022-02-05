@@ -21,10 +21,6 @@ import { UsersService } from 'src/app/services/users.service';
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
 
-  email: string = '';
-  password: string = '';
-  password2: string = '';
-  nickname: string = '';
 
   passwordError: boolean = false;
   constructor(
@@ -36,65 +32,52 @@ export class RegisterComponent implements OnInit {
     this.crearForm();
   }
 
-  /*validadorNickName(): ValidatorFn {
-    let size: Number;
-    return (nick: AbstractControl): { [key: string]: any } | null => {
-      if (nick.value) {
-
-        this.userService
-          .getUser(nick.value)
-          .subscribe((nombres) => { console.log(nombres);
-           size = new Set(nombres).size; console.log(size);
-           }
-           );
-          console.log("size:",size);
-        return size < 1 ? { valid: 'valid' } : null;
-      } else {
-        return null;
-      }
-    };
-  }
-  
-
-  createValidator(): AsyncValidatorFn {
-    return (control: AbstractControl): Observable<any> => {
-      return this.userService.getNickNames(control.value).pipe(
-        map((result: Boolean[]) => result ? null : {invalidAsync: true})
+  createValidator(): ValidatorFn {
+    return (control: AbstractControl): {[key:string]:any }|null => {
+      return this.userService.checkNickName(control.value).pipe(
+        map((result: IUserBD) => {   
+         return Object.entries(result).length==0 ? null : {isInvalid: true}})
       );
     };
-  }*/
-
-  provar() {
-    this.userService.getUser("pruebas").subscribe(d => {console.log(d);
-    ;return d});
-    
   }
 
+
   ngOnInit(): void {
-    this.provar();
+    
   }
 
   crearForm() {
     this.registerForm = this.formBuilder.group({
-      nickname: ['nickname',[ Validators.required]],
-      email: ['email'],
-      password: ['password'],
-      password2: ['password2'],
+      nickname: ['', [Validators.required],[this.createValidator()]],
+      email: ['',[Validators.required, Validators.email]],
+      password: [''],
+      password2: [''],
     });
   }
 
+  
+  inputsValidos(campo:string,error:string):string{
+    if(this.registerForm.get(campo)!.hasError(error) && this.registerForm.get(campo)!.touched){
+      return "is-invalid"
+    }
+    if(!this.registerForm.get(campo)!.hasError(error) && this.registerForm.get(campo)!.touched){
+      return "is-valid";
+    }
+    return "";
+
+  }
+
+
   submit(): void {
     let usuario: IUserFirebaseAuth = {
-      email: this.email,
-      password: this.password,
+      email: this.registerForm.get("email")?.value ,
+      password: this.registerForm.get("password")?.value ,
     };
-    let userDb: IUserBD = { nickname: this.nickname };
+    let userDb: IUserBD = { nickname: this.registerForm.get("nickname")?.value };
 
-    if (this.password != this.password2) {
+    if (this.registerForm.get("password")?.value != this.registerForm.get("password2")?.value) {
       this.passwordError = true;
     } else {
-      console.log('antes');
-
       this.registerService.register(usuario, userDb).subscribe({
         next: (user) => {
           this.router.navigate(['/home']);

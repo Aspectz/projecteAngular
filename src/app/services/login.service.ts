@@ -66,8 +66,8 @@ export class LoginService {
 
   
   register(userAuth:IUserFirebaseAuth,userDb:IUserBD):Observable<IUserBD>{
-    let usuario={...userAuth,returnSecureToken : true}
-    
+    let usuario={...userAuth,returnSecureToken : true,displayName:userDb.nickname}
+
     return this.http.post<{email:string,idToken:string,localId:string,displayName:string}>(this.registerUrl,JSON.stringify(usuario),this.httpOptions).pipe(
       mergeMap(response=>{
         this.saveLoginData(response.localId,response.email,response.displayName,response.idToken);

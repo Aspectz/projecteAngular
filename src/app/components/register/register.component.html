@@ -1,5 +1,41 @@
-<section class="vh-100 bg-light">
-    <div class="container-fluid h-custom">
+
+  <!--<div class="container-fluid vh-100" style="margin-top:300px">
+    <div class="" style="margin-top:200px">
+        <div class="rounded d-flex justify-content-center">
+            <div class="col-md-4 col-sm-12 shadow-lg p-5 bg-light">
+                <div class="text-center">
+                    <h3 class="text-primary">Create Account</h3>
+                </div>
+                <div class="p-4">
+                    <form action="">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text bg-primary"><i
+                                    class="bi bi-person-plus-fill text-white"></i></span>
+                            <input type="text" class="form-control" placeholder="Username">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text bg-primary"><i
+                                    class="bi bi-envelope text-white"></i></span>
+                            <input type="email" class="form-control" placeholder="Email">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text bg-primary"><i
+                                    class="bi bi-key-fill text-white"></i></span>
+                            <input type="password" class="form-control" placeholder="password">
+                        </div>
+                        <div class="d-grid col-12 mx-auto">
+                            <button class="btn btn-primary" type="button"><span></span> Sign up</button>
+                        </div>
+                        <p class="text-center mt-3">Already have an account?
+                            <span class="text-primary">Sign in</span>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+ <div class="container-fluid h-custom">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-md-8 col-lg-6 col-xl-4">
           <form id="form_register" [formGroup]="registerForm" (ngSubmit)="submit()">
@@ -7,18 +43,24 @@
             <label class="form-label" for="email">NickName</label>
             <input type="text" formControlName="nickname"  class="form-control form-control-lg"
               placeholder="Choose a nickname" />
+              <p class="text-danger" *ngIf="inputsValidos('nickname','required')=='is-invalid'"><strong>Nickname requerido</strong></p>  
+              <p class="text-danger" *ngIf="inputsValidos('nickname','isInvalid')=='is-invalid'"><strong>Nickname ya existe</strong></p>  
               <div id="nickerror"></div>
+              
             
           </div>
-            <!-- Email input -->
+            
             <div class="form-outline mb-4">
             <label class="form-label"   for="email"> Email address</label>
               <input type="email" class="form-control form-control-lg"
-                placeholder="Enter a valid email address"  formControlName="email"/>
+                placeholder="Enter a valid email address"  formControlName="email"
+                />
+                <p class="text-danger" *ngIf="inputsValidos('email','required')=='is-invalid'"><strong>Email requerido</strong></p>  
+                <p class="text-danger" *ngIf="inputsValidos('email','email')=='is-invalid'"><strong> Formato incorrecto</strong></p>  
                 <div id="emailerror"></div>
             </div>
   
-            <!-- Password input -->
+            
             <div class="form-outline mb-3">
             <label class="form-label" id="passwordLabel"  for="password">Password</label>
               <input type="password" name="password" id="password" class="form-control form-control-lg"
@@ -32,14 +74,12 @@
                 <p *ngIf="passwordError">Las contraseñas deben ser iguales </p>
             </div>
             <div class="text-center text-lg-start mt-4 pt-2">
-              <button type="submit"  class="btn btn-primary btn-lg"
+              <button type="submit"   [disabled]="registerForm.invalid"  class="btn btn-primary btn-lg"
                 style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
-              <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="#!"
-                  class="link-danger">Register</a></p>
-                  <p>{{registerForm.get("nickname")?.errors | json}}</p>
+             
             </div>
           </form>
         </div>
       </div>
     </div>
-  </section>
+  

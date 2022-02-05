@@ -19,5 +19,15 @@ export class PostsService {
       return post[1] })));
   }
   
+  getPost(comm:string,post:string):Observable<IPost>{
+
+    console.log(comm,post);
+    
+
+    return this.http.get<IPost>(`https://projectjs-b6bfe-default-rtdb.europe-west1.firebasedatabase.app/communities/${comm}/posts/${post}.json`).pipe(
+      map(p=>{ 
+       return p})
+    );
+  }
 
 }  

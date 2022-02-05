@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IsActiveMatchOptions } from '@angular/router';
-import { map, Observable } from 'rxjs';
+import { map, mergeMap, Observable } from 'rxjs';
 import { IUserBD, IUserFirebaseAuth } from '../interfaces/i-user';
 
 @Injectable({
@@ -14,46 +14,32 @@ export class UsersService {
 
   constructor(private http:HttpClient) { }
 
+  
+  getUsers():Observable<IUserBD[]>{
+    return this.http.get<{  [key:string]: IUserBD}>(this.url+".json")
+    .pipe(
+      map(  userObject=> Object.entries(userObject)),
+      map( userArray=> userArray.map(s=>  {  
+        return s[1]}   
+        ))
+      );
+  }
 
-  getUser(nick:string):Observable<IUserBD>{
-    let newUrl=`${this.url}/4hW7nPlU2ZgJooADcVSPm83F5DL2.json`;
-    
-    return this.http.get<IUserBD>(newUrl).pipe(
-      map( s=>{
-        return s;
+  checkNickName(nick:string):Observable<IUserBD>{
+    return this.http.get<IUserBD>(`${this.url}.json?orderBy="nickname"&equalTo="${nick}"`).pipe(
+      map(user=>{ 
+        console.log(user);
+        
+       return user 
       })
     );
+  }
 
+  getUser(id:string):Observable<IUserBD[]>{
+    return this.http.get<IUserBD[]>(`${this.url}/${id}.json`).pipe( map( user => user));
   }
 
 
- /* getUser(nick:string):Observable<any>{
-  
-    return this.http.get<IUserBD>("  https://projectjs-b6bfe-default-rtdb.europe-west1.firebasedatabase.app/users.json").pipe(
-     map( d => Object.entries(d)),
-     map( x =>  x.map( ps => {
-  
-      let newUrl=`${this.url}/${ps[0]}.json`;
-      
-      return this.http.get<IUserBD>(newUrl).pipe(
-        map( s=> { 
-          return s;} )
-      )
-    
-    })));
-  }*/
-  /*
-  
-   map(usuarios => { return Object.entries(usuarios)}),
-        map(usuariosArray => usuariosArray.map(post => {
-          
-          return post[1].nickname==nick;
-          
-           }
-      )));
-  
-  */ 
-  
   
   createUser(user:IUserBD,id:string){
     return this.http.put<IUserBD>(`${this.url}/${id}.json?auth=${localStorage.getItem("IDToken")}`,JSON.stringify(user));
