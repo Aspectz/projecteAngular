@@ -1,31 +1,37 @@
-<div class="leftDivVotes">
-  <p></p>
-  <p id="pUpvote">{{post?.upvotes}}</p>
-  <p></p>
-</div>
-<div class="divPost">
-  <a
-    style="text-decoration: none; color: white"
-    href="#/communities/{{post?.community}}/posts/{{post?.id}}"
-    ><div class="postAuthor">
-      <h6>
-        Posted by {{post?.author}} in
-        <a class="hrefStyle" href="#/communities/Memes">{{post?.community}}</a>
-      </h6>
-    </div>
-    <div class="postTitle">
-      <h3 style="font-size: 1.17em">{{post?.title}}</h3>
-    </div>
-    <div class="postBody">
-      <img
-        style="max-width: 100%;"
-        [src]="post?.file"
-      />
-    </div>
-    <div id="divPostBottom" class="divCommentsBtn">
-      <div class="divCommentsBtn">
-        <i class="iconComment"></i><span>1 Comments</span>
+<div class="mainContainer">
+  <div class="containerPosts">
+    <div class="divExt">
+      <div class="leftDivVotes">
+        <p></p>
+        <p id="pUpvote">{{post?.upvotes}}</p>
+        <p></p>
       </div>
-    </div></a
-  >
+      <div class="divPost">
+        <a
+          style="text-decoration: none; color: white"
+          href="#/communities/{{post?.community}}/posts/{{post?.id}}"
+          ><div class="postAuthor">
+            <h6>
+              Posted by {{post?.author}} in
+              <a class="hrefStyle" href="#/communities/Memes">{{post?.community}}</a>
+            </h6>
+          </div>
+          <div class="postTitle">
+            <h3 style="font-size: 1.17em">{{post?.title}}</h3>
+          </div>
+          <div class="postBody">
+            <img
+              style="max-width: 100%;"
+              [src]="post?.file"
+            />
+          </div>
+          <div id="divPostBottom" class="divCommentsBtn">
+            <div class="divCommentsBtn">
+              <i class="iconComment"></i><span>1 Comments</span>
+            </div>
+          </div></a
+        >
+      </div>
+    </div>
+  </div>
 </div>

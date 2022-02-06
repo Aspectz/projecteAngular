@@ -8,13 +8,14 @@ import { IPost } from '../interfaces/i-post';
 })
 export class PostsService {
 
-  
+  url='https://projectjs-b6bfe-default-rtdb.europe-west1.firebasedatabase.app/communities/';
   
   constructor(private http:HttpClient) { }
 
   getPosts(comm:string):Observable<IPost[]>{
-    return this.http.get<{[key:string]:IPost}>(`https://projectjs-b6bfe-default-rtdb.europe-west1.firebasedatabase.app/communities/${comm}.json`).pipe(
-      map(communityObj => Object.entries(communityObj['posts'])),
+    return this.http.get<{[key:string]:IPost}>(`${this.url}${comm}.json`).pipe(
+      map(communityObj => { console.log(communityObj);
+       return Object.entries(communityObj['posts'])}),
       map(communityArray => communityArray.map(post => { post[1].id = post[0];
       return post[1] })));
   }
@@ -24,7 +25,7 @@ export class PostsService {
     console.log(comm,post);
     
 
-    return this.http.get<IPost>(`https://projectjs-b6bfe-default-rtdb.europe-west1.firebasedatabase.app/communities/${comm}/posts/${post}.json`).pipe(
+    return this.http.get<IPost>(`${this.url}${comm}/posts/${post}.json`).pipe(
       map(p=>{ 
        return p})
     );

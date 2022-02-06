@@ -56,6 +56,8 @@ export class LoginService {
     
     return this.http.post<{email:string,idToken:string,localId:string,displayName:string}>(this.loginUrl,JSON.stringify(usuario),this.httpOptions).pipe(
       map(response=>{
+        console.log(response);
+        
           this.saveLoginData(response.localId,response.email,response.displayName,response.idToken);
           this.logged.next(true);
           return usuario;

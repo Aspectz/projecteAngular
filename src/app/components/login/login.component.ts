@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
 
   submit():void{
     let usuario:IUserFirebaseAuth={email:this.loginForm.get("email")?.value,password:this.loginForm.get("password")?.value};
-    console.log(usuario);
+    
     
     this.loginService.login(usuario).subscribe({
       next:user=>{

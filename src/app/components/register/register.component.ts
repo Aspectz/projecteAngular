@@ -4,6 +4,7 @@ import {
   AsyncValidatorFn,
   FormBuilder,
   FormGroup,
+  ValidationErrors,
   ValidatorFn,
   Validators,
 } from '@angular/forms';
@@ -40,8 +41,6 @@ export class RegisterComponent implements OnInit {
       );
     };
   }
-
-
   ngOnInit(): void {
     
   }

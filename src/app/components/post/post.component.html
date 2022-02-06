@@ -1,2 +1,50 @@
+<div class="mainContainer">
+  <div class="containerPosts">
+    <div class="divExt">
+      <div class="leftDivVotes">
+        <p></p>
+        <p id="pUpvote">{{ post?.upvotes }}</p>
+        <p></p>
+      </div>
+      <div class="divPost">
+        <div class="postAuthor">
+          <h6>
+            Posted by {{ post?.author }} in
+            <a class="hrefStyle" href="#/communities/Memes">{{
+              post?.community
+            }}</a>
+          </h6>
+        </div>
+        <div class="postTitle">
+          <h3 style="font-size: 1.17em">{{ post?.title }}</h3>
+        </div>
+        <div class="postBody">
+          <img style="max-width: 100%" [src]="post?.file" />
+        </div>
+        <div id="divPostBottom" class="divCommentsBtn">
+          <div class="divCommentsBtn">
+            <i class="iconComment"></i><span>1 Comments</span>
+          </div>
+        </div>
+        
+      </div>
+      
+    </div>
 
-<img [src]="post?.file">
+      <div class="divComments" style="padding:10px" *ngIf="isLogged">
+        <div>
+          <form>
+            <textarea class="commentTextArea" [(ngModel)]="comment" [ngModelOptions]="{standalone: true}"></textarea>
+          </form>
+        </div>
+        <button class="btn btn-primary"  (click)="newComment()" >Comment</button>
+      </div>
+
+      <div *ngIf="comments != undefined" class="divComments">
+        <app-comments
+          *ngFor="let item of comments"
+          [comments]="item"
+        ></app-comments>
+      </div>
+  </div>
+</div>
