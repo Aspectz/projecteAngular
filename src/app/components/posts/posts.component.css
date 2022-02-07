@@ -1,18 +1,4 @@
-.mainContainer{
-    display:flex;
-    justify-content: center;
-    flex-direction: row;
-    background-color: #030303;
-    margin:0 auto;
-    padding:20px 24px;
-}
 
-.containerPosts{
-    display: flex;
-    flex-direction: column;
-    width:640px;
-    
-}
 .divExt{
     display: flex;
     color:#77797a;
@@ -24,16 +10,6 @@
 }
 .divExt:hover{
     border: 1px solid rgba(255,255,255,0.5);
-}
-
-
-.leftDivVotes{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 10px;
-    max-width: 26px;
-    color: white;
 }
 .divPost{
     cursor: pointer;

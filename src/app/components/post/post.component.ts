@@ -32,8 +32,6 @@ export class PostComponent implements OnInit {
     
     this.commentService.newCommentSub.subscribe( data=>{ 
       
-      console.log("a");
-      
       this.postService.getPost(this.idComm,this.id).subscribe(data=>{
         this.comments=data.comments;
         this.comments=  this.comments==undefined ? undefined : Object.values(this.comments);
@@ -51,15 +49,12 @@ export class PostComponent implements OnInit {
           this.comments=  this.comments==undefined ? undefined : Object.values(this.comments);
         });
     });
-
-
   }
 
 
   newComment(){
-    this.comment="";
     this.commentService.createComment(this.id,this.idComm,this.comment);
-
+    this.comment="";
   }
 
 

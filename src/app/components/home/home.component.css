@@ -1,0 +1,14 @@
+.mainContainer{
+    display:flex;
+    justify-content: center;
+    flex-direction: row;
+    background-color: #030303;
+    margin:0 auto;
+    padding:20px 24px;
+}
+.containerPosts{
+    display: flex;
+    flex-direction: column;
+    width:640px;
+    
+}

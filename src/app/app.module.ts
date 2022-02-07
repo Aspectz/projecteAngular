@@ -12,6 +12,7 @@ import { PostsComponent } from './components/posts/posts.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PostComponent } from './components/post/post.component';
 import { CommentsComponent } from './components/comments/comments.component';
+import { VoteComponent } from './components/vote/vote.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CommentsComponent } from './components/comments/comments.component';
     LoginComponent,
     PostsComponent,
     PostComponent,
-    CommentsComponent
+    CommentsComponent,
+    VoteComponent
   ],
   imports: [
     BrowserModule,

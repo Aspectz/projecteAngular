@@ -1,11 +1,7 @@
 <div class="mainContainer">
   <div class="containerPosts">
     <div class="divExt">
-      <div class="leftDivVotes">
-        <p></p>
-        <p id="pUpvote">{{ post?.upvotes }}</p>
-        <p></p>
-      </div>
+      <app-vote [upvotes]="post?.upvotes" ></app-vote>
       <div class="divPost">
         <div class="postAuthor">
           <h6>

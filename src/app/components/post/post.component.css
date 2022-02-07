@@ -1,86 +1,76 @@
-.mainContainer{
-    display:flex;
-    justify-content: center;
-    flex-direction: row;
-    background-color: #030303;
-    margin:0 auto;
-    padding:20px 24px;
+.mainContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  background-color: #030303;
+  margin: 0 auto;
+  padding: 20px 24px;
 }
 
-.containerPosts{
-    display: flex;
-    flex-direction: column;
-    width:640px;
-    
+.containerPosts {
+  display: flex;
+  flex-direction: column;
+  width: 640px;
 }
-.divExt{
-    display: flex;
-    color:#77797a;
-    margin: 0px 10px 10px 0px;
-    background-color: #161617;
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 3px;
-    max-width: 640px;
+.divExt {
+  display: flex;
+  color: #77797a;
+  margin: 0px 10px 10px 0px;
+  background-color: #161617;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+  max-width: 640px;
 }
-.divExt:hover{
-    border: 1px solid rgba(255,255,255,0.5);
+.divExt:hover {
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
+.divPost {
+  cursor: pointer;
+  display: block;
+  color: #77797a;
+  width: 100%;
+  background-color: #1a1a1b;
+  padding: 10px;
+}
+.postAuthor {
+  color: #77797a;
+}
+.postTitle {
+  color: white;
+}
+.postBody {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.divCommentsBtn:hover {
+  background-color: #2d2d2f;
+}
+.divCommentsBtn {
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.divComments {
+  color: white;
+  margin: 0px 10px 10px 0px;
+  background-color: #161617;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+  max-width: 640px;
+}
+.commentTextArea {
+  height: 63px;
+  background-color: #1a1a1b;
+  resize: none;
+  border: 1px solid white;
+  border-radius: 3px;
+  width: 100%;
+  color: white;
+  outline: none;
+}
 
-.leftDivVotes{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 10px;
-    max-width: 26px;
-    color: white;
-}
-.divPost{
-    cursor: pointer;
-    display:block;
-    color:#77797a;
-    width: 100%;
-    background-color: #1a1a1b;
-    padding: 10px;
-}
-.postAuthor{
-    color:#77797a;
-}
-.postTitle{   
-    color: white;
-}
-.postBody{
-    display:flex;
-    flex-direction: row;
-    justify-content:center;
-}
-.divCommentsBtn:hover{
-    background-color: #2d2d2f;
-}
-.divCommentsBtn{
-    padding:8px;
-    margin-top: 5px;
-    border-radius: 2px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-.divComments{
-    color:white;
-    margin: 0px 10px 10px 0px;
-    background-color: #161617;
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 3px;
-    max-width: 640px;
-  
-  }
-  .commentTextArea{
-    height: 63px;
-    background-color: #1a1a1b;
-    resize: none;
-    border: 1px solid white;
-    border-radius: 3px;
-    width: 100%;
-    color:white;
-    outline: none;
-}

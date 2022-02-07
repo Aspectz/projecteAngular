@@ -23,6 +23,7 @@ export class CommentsService {
 
   createComment(idPost:string,idComm:string,comment:string){
     
+    
     let date = new Date();
       let dateFormat = [
         date.getDate(),
