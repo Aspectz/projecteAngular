@@ -17,7 +17,11 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
     this.isLogged=this.login.isLogged();
     this.login.logged.subscribe(log=> { 
+      console.log("login");
+     
+      
       this.isLogged=log; 
+      console.log(this.isLogged);
       this.nickname=this.isLogged ? localStorage.getItem("nickname")!: "" }); 
     
        

@@ -17,6 +17,9 @@ export class HomeComponent implements OnInit {
   constructor(private communitiesService:CommunitiesService, private postsService:PostsService) { }
 
   ngOnInit(): void {
+    this.getPosts();
+  }
+  getPosts(){
     this.communitiesService.getCommunities().subscribe(datos=>{
       
       this.communities=Object.values(datos);
@@ -30,3 +33,4 @@ export class HomeComponent implements OnInit {
     });  
   }
 }
+

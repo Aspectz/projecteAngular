@@ -1,5 +1,5 @@
 <div class="leftDivVotes"  >
-    <i class="arrow up" (click)="upvote()"  ></i>
-    <p id="pUpvote" style="margin:0.5rem 0 0.5rem 0">{{upvotes}}</p>
-    <i class="arrow down" (click)="downvote()"></i>
+    <i class="arrow up"   [ngClass]="getClassUp()" (click)="voteTest('upvote')"  ></i>
+    <p id="pUpvote" style="margin:0.5rem 0 0.5rem 0">{{votesCount}}</p>
+    <i class="arrow down" [ngClass]="getClassDown()"  (click)="voteTest('downvote')"></i>
 </div>

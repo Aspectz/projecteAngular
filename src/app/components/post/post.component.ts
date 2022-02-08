@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IPost } from 'src/app/interfaces/i-post';
+import { IVote } from 'src/app/interfaces/i-vote';
 import { CommentsService } from 'src/app/services/comments.service';
 import { LoginService } from 'src/app/services/login.service';
 import { PostsService } from 'src/app/services/posts.service';
@@ -40,6 +41,7 @@ export class PostComponent implements OnInit {
      return data}  )
 
     this.router.params.subscribe(params=>{
+        console.log("juan");
         
         this.postService.getPost(params['idCom'],params['id']).subscribe(data=>{ 
           this.idComm=params['idCom'];

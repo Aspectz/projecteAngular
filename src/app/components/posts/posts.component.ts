@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IComment } from 'src/app/interfaces/i-comment';
 import { IPost } from 'src/app/interfaces/i-post';
 
@@ -12,15 +12,12 @@ export class PostsComponent implements OnInit {
 
   @Input() post? : IPost;
 
+  @Output() refreshVotes =new EventEmitter<any>();
   
 
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  upvotes(){
-    //Necessitarem un output i input per als votos
     
     
   }

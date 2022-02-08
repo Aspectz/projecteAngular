@@ -21,3 +21,11 @@
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
   }
+
+  .upVote{
+    border-color:orange;
+  }
+
+  .downVote{
+    border-color:green;
+  }
