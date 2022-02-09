@@ -8,9 +8,10 @@
 }
 .arrow {
     border: solid white;
-    border-width: 0 3px 3px 0;
+    border-width: 0 5px 5px 0;
     display: inline-block;
     padding: 3px;
+    cursor: pointer;
   }
   .up {
     transform: rotate(-135deg);
@@ -23,9 +24,9 @@
   }
 
   .upVote{
-    border-color:orange;
+    border-color:green;
   }
 
   .downVote{
-    border-color:green;
+    border-color:red;
   }

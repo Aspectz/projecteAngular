@@ -21,6 +21,7 @@ export class PostComponent implements OnInit {
 
   idComm:string="";
   id:string="";
+  numberComments:number=0;
   
   comment :string='';
 
@@ -32,23 +33,25 @@ export class PostComponent implements OnInit {
     this.login.logged.subscribe(log=>this.isLogged=log);
     
     this.commentService.newCommentSub.subscribe( data=>{ 
-      
       this.postService.getPost(this.idComm,this.id).subscribe(data=>{
         this.comments=data.comments;
         this.comments=  this.comments==undefined ? undefined : Object.values(this.comments);
+        this.numberComments=this.comments ? Object.entries(this.comments).length : 0;
       });
-
-     return data}  )
+     return data;
+    });
 
     this.router.params.subscribe(params=>{
-        console.log("juan");
+      
         
         this.postService.getPost(params['idCom'],params['id']).subscribe(data=>{ 
           this.idComm=params['idCom'];
           this.id=params['id'];
           this.post=data;
           this.comments=this.post.comments;
-          this.comments=  this.comments==undefined ? undefined : Object.values(this.comments);
+          
+          this.comments= this.comments==undefined ? undefined : Object.values(this.comments);
+          this.numberComments=this.comments ? Object.entries(this.comments).length : 0;
         });
     });
   }

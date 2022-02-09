@@ -14,10 +14,13 @@ export class PostsComponent implements OnInit {
 
   @Output() refreshVotes =new EventEmitter<any>();
   
+  numberComments:number=0;
 
   constructor() { }
 
   ngOnInit(): void {
+    
+      this.numberComments=this.post?.comments ? Object.entries(this.post.comments!).length : 0;
     
     
   }

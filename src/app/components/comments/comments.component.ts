@@ -9,8 +9,6 @@ import { IComment } from 'src/app/interfaces/i-comment';
 export class CommentsComponent implements OnInit {
 
   @Input() comments? : IComment;
-
-
   constructor() { }
 
   

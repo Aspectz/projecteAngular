@@ -40,7 +40,7 @@ export class VoteComponent implements OnInit {
     }
     return voted;  
   }
-
+//TODO: refrescar al logout
 
   getVoteCount(){
     
