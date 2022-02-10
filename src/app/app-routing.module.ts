@@ -10,7 +10,7 @@ const routes: Routes = [
   {path:'register',component:RegisterComponent},
   {path:'login',component:LoginComponent},
   {path:'communities/:idCom/posts/:id',component:PostComponent},
-  //{path:'communities/:idCom'},
+  {path:'communities/:idCom',component:HomeComponent},
 
   {path: '**', pathMatch: 'full', redirectTo: 'home'}
 

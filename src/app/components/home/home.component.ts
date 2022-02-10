@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ICommunity } from 'src/app/interfaces/i-community';
 import { IPost } from 'src/app/interfaces/i-post';
 import { CommunitiesService } from 'src/app/services/communities.service';
@@ -14,14 +15,26 @@ export class HomeComponent implements OnInit {
   communities: ICommunity[] = [];
   posts_aux:IPost[][]=[];
   posts?: IPost[] | undefined;
-  constructor(private communitiesService:CommunitiesService, private postsService:PostsService) { }
+  constructor(private communitiesService:CommunitiesService, private postsService:PostsService,private router:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getPosts();
+    
+    this.router.params.subscribe( param=>{
+        if(!param['idCom']){
+          this.getPosts();
+        } else{
+          this.postsService.getPosts(param['idCom']).subscribe(posts=>{
+            this.posts_aux.push(posts);
+                this.posts=this.posts_aux?.flat();
+          })
+        }
+        
+      
+    } )
+    
   }
   getPosts(){
     this.communitiesService.getCommunities().subscribe(datos=>{
-      
       this.communities=Object.values(datos);
       for(let comm of this.communities){
           this.postsService.getPosts(comm.name).subscribe(posts=>{
@@ -32,5 +45,6 @@ export class HomeComponent implements OnInit {
         }
     });  
   }
+
 }
 

@@ -7,86 +7,79 @@ import { VotesService } from 'src/app/services/votes.service';
 @Component({
   selector: 'app-vote',
   templateUrl: './vote.component.html',
-  styleUrls: ['./vote.component.css']
+  styleUrls: ['./vote.component.css'],
 })
 export class VoteComponent implements OnInit {
+  @Input() votes?: IVote[] | undefined;
+  @Input() community: string | undefined;
+  @Input() post: string | undefined;
 
+  constructor(private voteService: VotesService) {}
 
-  @Input() votes? : IVote[] | undefined;
-  @Input() community : string |undefined;
-  @Input() post : string |undefined;
+  votesCount: number = 0;
+  idVote: string | undefined;
 
-  constructor(private voteService : VotesService) { }
-
-  votesCount:number=0;
-  idVote:string | undefined;
-
-  hasVoted:boolean|null=null;
+  hasVoted: boolean | null = null;
 
   ngOnInit(): void {
-      this.getVoteCount();
-      this.hasVoted=this.whathasVoted();
+    this.getVoteCount();
+    this.hasVoted = this.whathasVoted();
   }
-  
-  whathasVoted():boolean | null{
-    let voted=null; 
-    if(this.votes!=undefined){
-      Object.entries(this.votes).map( vote=>{  
-        if(vote[1].user==localStorage.getItem("nickname")){
-          voted=vote[1].type=="upvote" ? true : false;
-          this.idVote=vote[0];
+
+  whathasVoted(): boolean | null {
+    let voted = null;
+    if (this.votes != undefined) {
+      Object.entries(this.votes).map((vote) => {
+        if (vote[1].user == localStorage.getItem('nickname')) {
+          voted = vote[1].type == 'upvote' ? true : false;
+          this.idVote = vote[0];
         }
       });
     }
-    return voted;  
+    return voted;
   }
-//TODO: refrescar al logout
+  //TODO: refrescar al logout
 
-  getVoteCount(){
-    
-    this.votesCount=0;
-    if(this.votes!=undefined){
-      Object.entries(this.votes).map( vote=>{ 
-        this.votesCount=vote[1].type=="upvote" ? this.votesCount+=1 : this.votesCount-=1; 
-       })
-      };
+  getVoteCount() {
+    this.votesCount = 0;
+    if (this.votes != undefined) {
+      Object.entries(this.votes).map((vote) => {
+        this.votesCount =
+          vote[1].type == 'upvote'
+            ? (this.votesCount += 1)
+            : (this.votesCount -= 1);
+      });
+    }
   }
-  refreshVotes(){
-    this.voteService.getVotes(this.community!,this.post!).subscribe( data => {
-     
-      
-      this.votes=data;
+  refreshVotes() {
+    this.voteService.getVotes(this.community!, this.post!).subscribe((data) => {
+      this.votes = data;
       this.whathasVoted();
       this.getVoteCount();
       return data;
     });
   }
 
-  getClassDown():string{
-    return this.hasVoted==false?"downVote":"";
+  getClassDown(): string {
+    return this.hasVoted == false ? 'downVote' : '';
   }
 
-  getClassUp():string{
-    return this.hasVoted ? "upVote" : "";
+  getClassUp(): string {
+    return this.hasVoted ? 'upVote' : '';
   }
 
-  
-
-
-  voteTest(voteType:string){
-
-  
-  
-
-    this.voteService.vote(voteType,this.hasVoted,this.community!,this.post!,this.idVote).subscribe((data)=>
-      {
-        this.hasVoted=data;
-        this.refreshVotes();
-        
-        
-        return data;
-      }
-    );
+  voteTest(voteType: string) {
+    if (localStorage.getItem('nickname')) {
+      this.voteService
+        .vote(voteType, this.hasVoted, this.community!, this.post!, this.idVote)
+        .subscribe((data) => {
+          this.hasVoted = data;
+          this.refreshVotes();
+          return data;
+        });
+    }else{
+      console.log("error");
+      
+    }
   }
-
 }
