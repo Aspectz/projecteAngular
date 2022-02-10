@@ -12,8 +12,9 @@ export class PostsComponent implements OnInit {
 
   @Input() post? : IPost;
 
-  @Output() refreshVotes =new EventEmitter<any>();
+  @Output() error =new EventEmitter<any>();
   
+
   numberComments:number=0;
 
   constructor() { }
@@ -22,6 +23,12 @@ export class PostsComponent implements OnInit {
     
       this.numberComments=this.post?.comments ? Object.entries(this.post.comments!).length : 0;
     
+    
+  }
+
+  //Send error to homeComponent
+  sendError(error:any){
+    this.error.emit(error);
     
   }
 

@@ -15,6 +15,10 @@ export class HomeComponent implements OnInit {
   communities: ICommunity[] = [];
   posts_aux:IPost[][]=[];
   posts?: IPost[] | undefined;
+  
+  hasError:boolean=false;
+  errorMsg:string="";
+
   constructor(private communitiesService:CommunitiesService, private postsService:PostsService,private router:ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -44,6 +48,18 @@ export class HomeComponent implements OnInit {
           })  
         }
     });  
+  }
+  getError(error:any){
+    
+    
+    this.hasError=error.value;
+    this.errorMsg=error.error;
+    
+    setTimeout(() => {
+      this.hasError=false;
+    },5000);
+    
+    
   }
 
 }

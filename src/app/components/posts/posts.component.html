@@ -1,5 +1,5 @@
 <div class="divExt">
-  <app-vote [votes]="post?.votes" [community]="post?.community" [post]="post?.id"></app-vote>
+  <app-vote [votes]="post?.votes" [community]="post?.community" [post]="post?.id" (sendError)="sendError($event)" ></app-vote>
   <div class="divPost">
     <a
       style="text-decoration: none; color: white"
@@ -22,7 +22,6 @@
         <div class="divCommentsBtn">
           <i class="iconComment"></i><span>{{numberComments}} Comments</span>
         </div>
-      </div></a
-    >
+      </div></a>
   </div>
 </div>

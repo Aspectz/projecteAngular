@@ -1,7 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { ICommunity } from 'src/app/interfaces/i-community';
-import { IPost } from 'src/app/interfaces/i-post';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IVote } from 'src/app/interfaces/i-vote';
 import { VotesService } from 'src/app/services/votes.service';
 @Component({
@@ -14,6 +11,7 @@ export class VoteComponent implements OnInit {
   @Input() community: string | undefined;
   @Input() post: string | undefined;
 
+  @Output() sendError=new EventEmitter<any>();
   constructor(private voteService: VotesService) {}
 
   votesCount: number = 0;
@@ -78,8 +76,7 @@ export class VoteComponent implements OnInit {
           return data;
         });
     }else{
-      console.log("error");
-      
+      this.sendError.emit({"value":true,"error":"You must be logged to vote"})
     }
   }
 }

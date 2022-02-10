@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IPost } from 'src/app/interfaces/i-post';
 import { IVote } from 'src/app/interfaces/i-vote';
 import { CommentsService } from 'src/app/services/comments.service';
 import { LoginService } from 'src/app/services/login.service';
 import { PostsService } from 'src/app/services/posts.service';
+
 
 @Component({
   selector: 'app-post',
@@ -21,11 +22,14 @@ export class PostComponent implements OnInit {
 
   idComm:string="";
   id:string="";
-  numberComments:number=0;
-  
-  comment :string='';
 
+  numberComments:number=0;
+  comment :string='';
   comments : any ;
+  
+  //error
+  hasError:boolean=false;
+  errorMsg:string="";
 
   ngOnInit(): void {
 
@@ -60,6 +64,16 @@ export class PostComponent implements OnInit {
   newComment(){
     this.commentService.createComment(this.id,this.idComm,this.comment);
     this.comment="";
+  }
+
+  getError(error:any){
+    this.hasError=error.value;
+    this.errorMsg=error.error;
+
+    setTimeout(() => {
+      this.hasError=false;
+    },5000);
+
   }
 
 

@@ -21,9 +21,9 @@ export class MenuComponent implements OnInit {
       this.isLogged=log; 
       this.nickname=this.isLogged ? localStorage.getItem("nickname")!: "" }); 
     
+
        
   }
-
 
   logout(){
     

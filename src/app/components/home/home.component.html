@@ -1,5 +1,6 @@
 <div class="mainContainer">
   <div class="containerPosts">
-    <app-posts *ngFor="let post of posts" [post]="post" ></app-posts>
+    <app-posts *ngFor="let post of posts"  [post]="post"  (error)="getError($event)" ></app-posts>
+    <app-toast *ngIf="hasError" [errorMsg]="errorMsg" ></app-toast>
   </div>
 </div>
