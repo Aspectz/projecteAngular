@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   flex-direction: row;
-  background-color: #030303;
+  background-color:  var(--bg-color);;
   margin: 0 auto;
   padding: 20px 24px;
 }
@@ -15,8 +15,8 @@
 .divExt {
   display: flex;
   color: #77797a;
-  margin: 0px 10px 10px 0px;
-  background-color: #161617;
+  margin: 10px 0px 10px 0px;
+  background-color: var(--div-ext);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 3px;
   max-width: 640px;
@@ -30,14 +30,14 @@
   display: block;
   color: #77797a;
   width: 100%;
-  background-color: #1a1a1b;
+  background-color: var(--bg-post);
   padding: 10px;
 }
 .postAuthor {
   color: #77797a;
 }
 .postTitle {
-  color: white;
+  color: var(--primary-text);
 }
 .postBody {
   display: flex;
@@ -57,15 +57,15 @@
 }
 .divComments {
   color: white;
-  margin: 0px 10px 10px 0px;
-  background-color: #161617;
+  margin: 10px 0px 10px 0px;
+  background-color: var(--div-ext);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 3px;
   max-width: 640px;
 }
 .commentTextArea {
   height: 63px;
-  background-color: #1a1a1b;
+  background-color: var(--bg-post);
   resize: none;
   border: 1px solid white;
   border-radius: 3px;

@@ -1,5 +1,7 @@
 .spanDate{
-    color:#77797a;
+    color:var(--secondary-text);
     margin-left: 3%;
-    
+  }
+  .textColor{
+    color:var(--primary-text);
   }

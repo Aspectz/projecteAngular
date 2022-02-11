@@ -8,6 +8,16 @@
       <li *ngIf="isLogged"><a id="nickname">{{nickname}}</a></li>
       <li *ngIf="isLogged" ><a id="create_post" >Create Post</a></li>
       <li *ngIf="isLogged" ><a id="logout" (click)="logout()" >Log Out</a></li>
-      <li><label class="switch"><input type="checkbox" checked><span class="slider round"></span></label></li>
+      <li><label class="switch"><input type="checkbox" (change)="changeTheme($event)" ><span class="slider round"></span></label></li>
+     <!-- <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown button
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </div>-->
     </ul>
   </div>

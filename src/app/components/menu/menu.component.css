@@ -1,6 +1,6 @@
 .menu-bar {
-    background-color: #1a1a1b;
-    color:white;
+    background-color: var(--bg-post);
+    color: var(--primary-text);
     height: 80px;
     width: 100%;
     display: flex;

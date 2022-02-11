@@ -8,12 +8,14 @@ import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
-import { PostsComponent } from './components/posts/posts.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PostComponent } from './components/post/post.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { VoteComponent } from './components/vote/vote.component';
 import { ToastComponent } from './components/toast/toast.component';
+import { CommunityComponent } from './components/community/community.component';
+import { PostListComponent } from './components/post-list/post-list.component';
+
 
 @NgModule({
   declarations: [
@@ -22,11 +24,12 @@ import { ToastComponent } from './components/toast/toast.component';
     HomeComponent,
     RegisterComponent,
     LoginComponent,
-    PostsComponent,
     PostComponent,
     CommentsComponent,
     VoteComponent,
-    ToastComponent
+    PostListComponent,
+    ToastComponent,
+    CommunityComponent
   ],
   imports: [
     BrowserModule,

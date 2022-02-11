@@ -20,11 +20,15 @@ export class VoteComponent implements OnInit {
   hasVoted: boolean | null = null;
 
   ngOnInit(): void {
+    
+    
     this.getVoteCount();
     this.hasVoted = this.whathasVoted();
   }
 
   whathasVoted(): boolean | null {
+    
+    
     let voted = null;
     if (this.votes != undefined) {
       Object.entries(this.votes).map((vote) => {

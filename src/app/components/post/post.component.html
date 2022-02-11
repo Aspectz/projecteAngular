@@ -2,7 +2,7 @@
   <div class="containerPosts">
     <div class="divExt">
       <!-- USING NGIF to delay the inicialization of vote components// EL ngIf detecta el canvi de la variable i ho enseña quan estiga carrega-->
-      <app-vote   [votes]="post?.votes" [community]="idComm" [post]="id" (sendError)="getError($event)"></app-vote>
+      <app-vote  *ngIf="post?.votes"  [votes]="post?.votes" [community]="idComm" [post]="id" (sendError)="getError($event)"></app-vote>
       <div class="divPost">
         <div class="postAuthor">
           <h6>
@@ -32,7 +32,7 @@
             <textarea class="commentTextArea" [(ngModel)]="comment" [ngModelOptions]="{standalone: true}"></textarea>
           </form>
         </div>
-        <button class="btn btn-primary"  (click)="newComment()">Comment</button>
+        <button class="btn btn-primary"  style="margin-top: 1em;" (click)="newComment()">Comment</button>
       </div>
 
       <div *ngIf="comments != undefined" class="divComments">

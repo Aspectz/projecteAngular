@@ -4,10 +4,10 @@
     align-items: center;
     margin: 10px;
     max-width: 26px;
-    color: white;
+    color: var(--primary-text);
 }
 .arrow {
-    border: solid white;
+    border: solid var(--primary-text);
     border-width: 0 5px 5px 0;
     display: inline-block;
     padding: 3px;

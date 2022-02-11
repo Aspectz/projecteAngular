@@ -1,0 +1,22 @@
+.mainContainer{
+    display:flex;
+    justify-content: center;
+    flex-direction: row;
+    background-color:  var(--bg-color);;
+    margin:0 auto;
+    padding:20px 24px;
+}
+.containerPosts{
+    display: flex;
+    flex-direction: column;
+    width:640px;   
+}
+.divExt {
+    display: flex;
+    color: #77797a;
+    margin: 10px 0px 10px 0px;
+    background-color: #161617;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    max-width: 640px;
+  }

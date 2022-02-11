@@ -2,7 +2,7 @@
     display:flex;
     justify-content: center;
     flex-direction: row;
-    background-color: #030303;
+    background-color: var(--bg-color);
     margin:0 auto;
     padding:20px 24px;
 }

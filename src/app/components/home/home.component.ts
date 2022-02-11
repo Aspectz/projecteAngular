@@ -23,18 +23,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.router.params.subscribe( param=>{
-        if(!param['idCom']){
-          this.getPosts();
-        } else{
-          this.postsService.getPosts(param['idCom']).subscribe(posts=>{
-            this.posts_aux.push(posts);
-                this.posts=this.posts_aux?.flat();
-          })
-        }
-        
-      
-    } )
+   this.getPosts();
     
   }
   getPosts(){
@@ -50,7 +39,6 @@ export class HomeComponent implements OnInit {
     });  
   }
   getError(error:any){
-    
     
     this.hasError=error.value;
     this.errorMsg=error.error;

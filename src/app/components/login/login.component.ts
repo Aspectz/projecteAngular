@@ -38,8 +38,8 @@ export class LoginComponent implements OnInit {
 
   crearForm(){
     this.loginForm=this.formBuilder.group({
-      email:['email',[Validators.required,Validators.email]],
-      password:['password',[Validators.required,]]
+      email:['playrust@yopmail.com',[Validators.required,Validators.email]],
+      password:['playrust',[Validators.required,]]
     });
   }
   get emailNotValid(){

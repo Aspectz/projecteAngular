@@ -2,28 +2,28 @@
 .divExt{
     display: flex;
     color:#77797a;
-    margin: 0px 10px 10px 0px;
-    background-color: #161617;
+    margin: 10px 0px 10px 0px;
+    background-color: var(--div-ext);
     border: 1px solid rgba(255,255,255,0.2);
     border-radius: 3px;
     max-width: 640px;
 }
 .divExt:hover{
-    border: 1px solid rgba(255,255,255,0.5);
+    border: 1px solid red;
 }
 .divPost{
     cursor: pointer;
     display:block;
     color:#77797a;
     width: 100%;
-    background-color: #1a1a1b;
+    background-color: var(--bg-post);
     padding: 10px;
 }
 .postAuthor{
     color:#77797a;
 }
 .postTitle{   
-    color: white;
+    color: var(--primary-text);
 }
 .postBody{
     display:flex;
@@ -31,10 +31,11 @@
     justify-content:center;
 }
 .divCommentsBtn:hover{
-    background-color: #2d2d2f;
+    background-color: var(--div-ext);
 }
 .divCommentsBtn{
     padding:8px;
+    color:var(--primary-text);
     margin-top: 5px;
     border-radius: 2px;
     display: flex;

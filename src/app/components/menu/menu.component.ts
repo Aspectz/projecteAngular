@@ -24,9 +24,12 @@ export class MenuComponent implements OnInit {
 
        
   }
+  
+  changeTheme(event:any){
+    document.body.classList.toggle("dark-theme");
+  }
 
   logout(){
-    
     this.login.logout();
     
   }
