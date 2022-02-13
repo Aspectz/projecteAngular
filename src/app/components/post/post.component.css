@@ -71,7 +71,7 @@
   border: 1px solid white;
   border-radius: 3px;
   width: 100%;
-  color: white;
+  color: var(--primary-text);
   outline: none;
 }
 

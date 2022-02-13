@@ -2,7 +2,8 @@
   <div class="containerPosts">
     <div class="divExt">
       <!-- USING NGIF to delay the inicialization of vote components// EL ngIf detecta el canvi de la variable i ho enseña quan estiga carrega-->
-      <app-vote  *ngIf="post?.votes"  [votes]="post?.votes" [community]="idComm" [post]="id" (sendError)="getError($event)"></app-vote>
+      <!-- revisar //  if the post doesnt have any votes it wont show the vote options-->
+      <app-vote    [votes]="post?.votes" [community]="idComm" [post]="id" (sendError)="getError($event)"></app-vote>
       <div class="divPost">
         <div class="postAuthor">
           <h6>

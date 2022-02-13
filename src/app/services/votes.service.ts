@@ -51,7 +51,7 @@ export class VotesService {
     }
     else if(this.userVote){
       if(voteType=="upvote")
-         return this.deleteVote(idComm,idPost,idVote!).pipe(switchMap((response)=> of(null)));
+         return this.deleteVote(idComm,idPost,idVote!).pipe(switchMap((response)=>  of(null)));
       return this.http.put(`${upvoteUrl}/${idVote!}.json?auth=${localStorage.getItem("IDToken")}`,JSON.stringify(vote)).pipe( switchMap((resp)=>of(false)))
       
     }

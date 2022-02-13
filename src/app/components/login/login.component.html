@@ -9,6 +9,7 @@
               <input type="email" class="form-control form-control-lg"
                 placeholder="Enter a valid email address" formControlName="email" [ngClass]="emailNotValid"  />
               <label class="form-label" for="form3Example3">Email address</label>
+              <p class="text-danger" *ngIf="emailError"><strong>{{emailError}}</strong></p>  
             </div>
   
             <!-- Password input -->
@@ -16,6 +17,7 @@
               <input type="password" class="form-control form-control-lg"
                 placeholder="Enter password" formControlName="password"  />
               <label class="form-label" for="form3Example4">Password</label>
+              <p class="text-danger" *ngIf="passwdError"><strong>{{passwdError}}</strong></p>  
             </div>
             <div class="text-center text-lg-start mt-4 pt-2">
               <button type="submit" class="btn btn-primary btn-lg"

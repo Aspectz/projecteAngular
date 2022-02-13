@@ -52,6 +52,8 @@ export class PostComponent implements OnInit {
           this.idComm=params['idCom'];
           this.id=params['id'];
           this.post=data;
+          
+          
           this.comments=this.post.comments;
           
           

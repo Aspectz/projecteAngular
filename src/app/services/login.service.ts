@@ -56,13 +56,14 @@ export class LoginService {
     
     return this.http.post<{email:string,idToken:string,localId:string,displayName:string}>(this.loginUrl,JSON.stringify(usuario),this.httpOptions).pipe(
       map(response=>{
-        console.log(response);
-        
+          //console.log("log response"+response);
           this.saveLoginData(response.localId,response.email,response.displayName,response.idToken);
           this.logged.next(true);
           return usuario;
       }),
-      catchError((resp:HttpErrorResponse)=> throwError(()=> new Error(`Error de Login: ${resp.message}`)))
+      catchError((resp:HttpErrorResponse)=> throwError(()=>{
+      return resp.error.error.message;}
+         ))
     )
   }
 

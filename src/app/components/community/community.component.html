@@ -1,6 +1,6 @@
 <div class="mainContainer">
     <div class="containerPosts">
-      <button class="btn divExt" ></button>
+      <div class="d-flex   justify-content-between"><h1 *ngIf="commName">{{commName}}</h1><button class="btn divExt" (click)="followOrUnfollow()" >{{followsComm ? "Unfollow": "Follow"}}</button></div>
       <app-posts *ngFor="let post of posts"  [post]="post"  (error)="getError($event)" ></app-posts>
       <app-toast *ngIf="hasError" [errorMsg]="errorMsg" ></app-toast>
     </div>

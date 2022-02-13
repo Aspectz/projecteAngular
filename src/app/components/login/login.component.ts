@@ -12,8 +12,11 @@ export class LoginComponent implements OnInit {
 
   //DIU Q EXISTIRA AMB EL !
   public loginForm!:FormGroup;
-  public email='';
-  public password=''
+  private email='';
+  private password=''
+
+  public emailError:string|undefined;
+  public passwdError:string|undefined;
 
   constructor(private loginService : LoginService, private router:Router,private formBuilder: FormBuilder) {
     this.crearForm();
@@ -25,11 +28,19 @@ export class LoginComponent implements OnInit {
   submit():void{
     let usuario:IUserFirebaseAuth={email:this.loginForm.get("email")?.value,password:this.loginForm.get("password")?.value};
     
-    
-    this.loginService.login(usuario).subscribe({
+    this.loginService.login(usuario).subscribe({ 
+           
       next:user=>{
         this.router.navigate(['/home']);
+      },
+      error:error=>{
+         this.emailError=undefined;
+         this.passwdError=undefined;
+        if(error=="INVALID_PASSWORD") this.passwdError=error;
+        else if(error=="EMAIL_NOT_FOUND") this.emailError=error;
+        
       }
+
     });
   }
 

@@ -37,4 +37,8 @@ export class PostsService {
       })
     );
   }
+
+  createPost(post:IPost):Observable<IPost>{
+    return this.http.post<IPost>(`${this.url}/${post.community}/posts.json?auth=${localStorage.getItem("IDToken")}`,JSON.stringify(post));
+  }
 }

@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IsActiveMatchOptions } from '@angular/router';
-import { map, mergeMap, Observable } from 'rxjs';
+import { EMPTY, map, mergeMap, Observable, of } from 'rxjs';
+import { ICommunity } from '../interfaces/i-community';
 import { IUserBD, IUserFirebaseAuth } from '../interfaces/i-user';
 
 @Injectable({
@@ -28,22 +29,24 @@ export class UsersService {
   checkNickName(nick:string):Observable<IUserBD>{
     return this.http.get<IUserBD>(`${this.url}.json?orderBy="nickname"&equalTo="${nick}"`).pipe(
       map(user=>{ 
-        console.log(user);
-        
        return user 
       })
     );
   }
 
-  getUser(id:string):Observable<IUserBD[]>{
-    return this.http.get<IUserBD[]>(`${this.url}/${id}.json`).pipe( map( user => user));
+  getUser(id:string):Observable<IUserBD>{
+    return this.http.get<IUserBD>(`${this.url}/${id}.json`).pipe( map( user => user));
   }
-
-
-  
   createUser(user:IUserBD,id:string){
     return this.http.put<IUserBD>(`${this.url}/${id}.json?auth=${localStorage.getItem("IDToken")}`,JSON.stringify(user));
-
   }
+
+  deleteUserCommunity(user:string,community:string):Observable<ICommunity[]>{
+    return this.http.delete<ICommunity[]>(`${this.url}/${user}/communities/${community}.json?auth=${localStorage.getItem("IDToken")}`);
+  }
+  createUserCommunity(user:string,communityId:string):Observable<ICommunity[]>{
+    return this.http.put<ICommunity[]>(`${this.url}/${user}/communities/${communityId}.json?auth=${localStorage.getItem("IDToken")}`,JSON.stringify(communityId));
+  }
+
 
 }
