@@ -2,9 +2,12 @@
 body{
     --secondary-text:#77797a;
     --primary-text:black;
-    --bg-color:rgba(255, 255, 255, 0.842);
+    --bg-color:#d7d7d7;
     --bg-post:white;
     --div-ext:#f0f0f0;
+    --post-hover:rgba(0, 0, 0, 0.4);
+  
+    
 }
 
 body.dark-theme{
@@ -13,4 +16,12 @@ body.dark-theme{
     --bg-color:#030303;
     --bg-post:#1a1a1b;
     --div-ext:#161617;
+    --post-hover:rgba(255, 255, 255, 0.5);
+    
 }
+
+.bodybg{
+    background-color: var(--bg-color);
+}
+
+

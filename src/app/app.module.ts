@@ -15,6 +15,9 @@ import { VoteComponent } from './components/vote/vote.component';
 import { ToastComponent } from './components/toast/toast.component';
 import { CommunityComponent } from './components/community/community.component';
 import { PostListComponent } from './components/post-list/post-list.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CommunityFormComponent } from './components/community-form/community-form.component';
+import { PostFormComponent } from './components/post-form/post-form.component';
 
 
 @NgModule({
@@ -29,14 +32,17 @@ import { PostListComponent } from './components/post-list/post-list.component';
     VoteComponent,
     PostListComponent,
     ToastComponent,
-    CommunityComponent
+    CommunityComponent,
+    CommunityFormComponent,
+    PostFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

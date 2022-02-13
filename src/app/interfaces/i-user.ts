@@ -1,6 +1,6 @@
 export interface IUserFirebaseAuth {
     email:string,
-    password:string,
+    password?:string,
 }
 
 export interface IUserBD{

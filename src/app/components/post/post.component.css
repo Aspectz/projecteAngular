@@ -5,6 +5,7 @@
   background-color:  var(--bg-color);;
   margin: 0 auto;
   padding: 20px 24px;
+  
 }
 
 .containerPosts {
@@ -22,7 +23,7 @@
   max-width: 640px;
 }
 .divExt:hover {
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--post-hover);
 }
 
 .divPost {
@@ -45,7 +46,7 @@
   justify-content: center;
 }
 .divCommentsBtn:hover {
-  background-color: #2d2d2f;
+  background-color: var(--div-ext);
 }
 .divCommentsBtn {
   padding: 8px;

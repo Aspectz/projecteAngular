@@ -11,6 +11,12 @@
     position: relative;
   }
   
+  
+  .custom-dropdown{
+    background-color: var(--bg-post);
+    border:1px solid var(--div-ext);
+  }
+
   .menu-bar ul {
     list-style: none;
     display: flex;

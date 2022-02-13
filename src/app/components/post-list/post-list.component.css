@@ -9,7 +9,7 @@
     max-width: 640px;
 }
 .divExt:hover{
-    border: 1px solid red;
+    border: 1px solid var(--post-hover);
 }
 .divPost{
     cursor: pointer;
