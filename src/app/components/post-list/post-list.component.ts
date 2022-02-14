@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { IComment } from 'src/app/interfaces/i-comment';
 import { IPost } from 'src/app/interfaces/i-post';
 
 @Component({

@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable, of, switchMap } from 'rxjs';
-import { IVote } from '../interfaces/i-vote';
+import { IVote } from 'src/app/interfaces/i-vote';
+
 
 @Injectable({
   providedIn: 'root'

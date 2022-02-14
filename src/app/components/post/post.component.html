@@ -1,6 +1,6 @@
 <div class="mainContainer">
-  <div class="containerPosts">
-    <div class="divExt">
+  <div class="containerPosts" *ngIf="post">
+    <div class="divExt" >
       <!-- USING NGIF to delay the inicialization of vote components// EL ngIf detecta el canvi de la variable i ho enseña quan estiga carrega-->
       <!-- revisar //  if the post doesnt have any votes it wont show the vote options-->
       <app-vote    [votes]="post?.votes" [community]="idComm" [post]="id" (sendError)="getError($event)"></app-vote>
@@ -8,7 +8,7 @@
         <div class="postAuthor">
           <h6>
             Posted by {{ post?.author }} in
-            <a class="hrefStyle" href="#/communities/Memes">{{
+            <a class="hrefStyle" href="#/communities/{{post?.community}}">{{
               post?.community
             }}</a>
           </h6>
@@ -30,7 +30,7 @@
       <div class="divComments" style="padding:10px" *ngIf="isLogged">
         <div>
           <form>
-            <textarea class="commentTextArea" [(ngModel)]="comment" [ngModelOptions]="{standalone: true}"></textarea>
+            <textarea class="commentTextArea" [(ngModel)]="comment" [ngModelOptions]="{standalone:true}" ></textarea>
           </form>
         </div>
         <button class="btn btn-primary"  style="margin-top: 1em;" (click)="newComment()">Comment</button>
@@ -42,6 +42,9 @@
           [comments]="item"
         ></app-comments>
       </div>
+  </div>
+  <div *ngIf="!post">
+    <p>THIS POST DOESNT EXIST</p>
   </div>
   <app-toast *ngIf="hasError" [errorMsg]="errorMsg"  ></app-toast>
 </div>

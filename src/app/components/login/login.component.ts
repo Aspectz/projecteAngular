@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {  IUserFirebaseAuth } from 'src/app/interfaces/i-user';
-import { LoginService } from 'src/app/services/login.service';
+
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LoginService } from 'src/app/services/login/login.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

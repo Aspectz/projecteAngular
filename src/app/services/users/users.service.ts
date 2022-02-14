@@ -2,8 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IsActiveMatchOptions } from '@angular/router';
 import { EMPTY, map, mergeMap, Observable, of } from 'rxjs';
-import { ICommunity } from '../interfaces/i-community';
-import { IUserBD, IUserFirebaseAuth } from '../interfaces/i-user';
+import { ICommunity } from 'src/app/interfaces/i-community';
+import { IUserBD } from 'src/app/interfaces/i-user';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -44,8 +46,8 @@ export class UsersService {
   deleteUserCommunity(user:string,community:string):Observable<ICommunity[]>{
     return this.http.delete<ICommunity[]>(`${this.url}/${user}/communities/${community}.json?auth=${localStorage.getItem("IDToken")}`);
   }
-  createUserCommunity(user:string,communityId:string):Observable<ICommunity[]>{
-    return this.http.put<ICommunity[]>(`${this.url}/${user}/communities/${communityId}.json?auth=${localStorage.getItem("IDToken")}`,JSON.stringify(communityId));
+  createUserCommunity(user:string,communityId:string):Observable<ICommunity>{
+    return this.http.put<ICommunity>(`${this.url}/${user}/communities/${communityId}.json?auth=${localStorage.getItem("IDToken")}`,JSON.stringify(communityId));
   }
 
 

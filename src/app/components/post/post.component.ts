@@ -1,10 +1,12 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IPost } from 'src/app/interfaces/i-post';
-import { IVote } from 'src/app/interfaces/i-vote';
-import { CommentsService } from 'src/app/services/comments.service';
-import { LoginService } from 'src/app/services/login.service';
-import { PostsService } from 'src/app/services/posts.service';
+import { CommentsService } from 'src/app/services/comments/comments.service';
+import { LoginService } from 'src/app/services/login/login.service';
+import { PostsService } from 'src/app/services/posts/posts.service';
+
+
+
 
 
 @Component({
@@ -37,7 +39,7 @@ export class PostComponent implements OnInit {
     this.login.logged.subscribe(log=>this.isLogged=log);
     
     this.commentService.newCommentSub.subscribe( data=>{ 
-      this.postService.getPost(this.idComm,this.id).subscribe(data=>{
+      this.postService.getPost(this.idComm,this.id).subscribe(data=>{        
         this.comments=data.comments;
         this.comments=  this.comments==undefined ? undefined : Object.values(this.comments);
         this.numberComments=this.comments ? Object.entries(this.comments).length : 0;
@@ -46,17 +48,11 @@ export class PostComponent implements OnInit {
     });
 
     this.router.params.subscribe(params=>{
-      
-        
         this.postService.getPost(params['idCom'],params['id']).subscribe(data=>{ 
           this.idComm=params['idCom'];
           this.id=params['id'];
           this.post=data;
-          
-          
-          this.comments=this.post.comments;
-          
-          
+          this.comments=this.post!.comments;
           this.comments= this.comments==undefined ? undefined : Object.values(this.comments);
           this.numberComments=this.comments ? Object.entries(this.comments).length : 0;
         });
@@ -65,6 +61,7 @@ export class PostComponent implements OnInit {
 
 
   newComment(){
+    
     this.commentService.createComment(this.id,this.idComm,this.comment);
     this.comment="";
   }

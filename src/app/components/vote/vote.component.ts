@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IVote } from 'src/app/interfaces/i-vote';
-import { VotesService } from 'src/app/services/votes.service';
+import { VotesService } from 'src/app/services/votes/votes.service';
+
 @Component({
   selector: 'app-vote',
   templateUrl: './vote.component.html',

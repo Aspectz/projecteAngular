@@ -3,8 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { ICommunity } from 'src/app/interfaces/i-community';
 import { IPost } from 'src/app/interfaces/i-post';
 import { IUserBD } from 'src/app/interfaces/i-user';
-import { PostsService } from 'src/app/services/posts.service';
-import { UsersService } from 'src/app/services/users.service';
+import { PostsService } from 'src/app/services/posts/posts.service';
+import { UsersService } from 'src/app/services/users/users.service';
+
+
 
 @Component({
   selector: 'app-community',

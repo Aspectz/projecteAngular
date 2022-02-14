@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ICommunity } from 'src/app/interfaces/i-community';
 import { IPost } from 'src/app/interfaces/i-post';
-import { CommunitiesService } from 'src/app/services/communities.service';
-import { PostsService } from 'src/app/services/posts.service';
+import { CommunitiesService } from 'src/app/services/communities/communities.service';
+import { PostsService } from 'src/app/services/posts/posts.service';
+
+
 
 @Component({
   selector: 'app-home',
@@ -30,6 +32,8 @@ export class HomeComponent implements OnInit {
     this.communitiesService.getCommunities().subscribe(datos=>{
       this.communities=Object.values(datos);
       for(let comm of this.communities){
+        
+        if(comm.posts)
           this.postsService.getPosts(comm.name).subscribe(posts=>{
             this.posts_aux.push(posts);
             this.posts=this.posts_aux?.flat();

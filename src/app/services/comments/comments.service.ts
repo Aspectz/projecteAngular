@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Subject } from 'rxjs';
-import { IComment } from '../interfaces/i-comment';
+import { IComment } from 'src/app/interfaces/i-comment';
+
 
 @Injectable({
   providedIn: 'root'

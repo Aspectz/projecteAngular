@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { IPost } from '../interfaces/i-post';
+import { IPost } from 'src/app/interfaces/i-post';
+
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,7 @@ export class PostsService {
       .get<{ [key: string]: IPost }>(`${this.url}${comm}.json`)
       .pipe(
         map((communityObj) => {
-          return Object.entries(communityObj['posts']);
+            return Object.entries(communityObj['posts']);
         }),
         map((communityArray) =>
           communityArray.map((post) => {

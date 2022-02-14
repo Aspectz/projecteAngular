@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
-  AsyncValidatorFn,
   FormBuilder,
   FormGroup,
-  ValidationErrors,
   ValidatorFn,
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { IUserBD, IUserFirebaseAuth } from 'src/app/interfaces/i-user';
-import { LoginService } from 'src/app/services/login.service';
-import { UsersService } from 'src/app/services/users.service';
+import { LoginService } from 'src/app/services/login/login.service';
+import { UsersService } from 'src/app/services/users/users.service';
+
+
 
 @Component({
   selector: 'app-register',

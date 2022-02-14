@@ -2,9 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { IComment } from 'src/app/interfaces/i-comment';
 import { ICommunity } from 'src/app/interfaces/i-community';
 import { IPost } from 'src/app/interfaces/i-post';
-import { FileUploadService } from 'src/app/services/file-upload.service';
-import { PostsService } from 'src/app/services/posts.service';
-import { UsersService } from 'src/app/services/users.service';
+import { FileUploadService } from 'src/app/services/file-upload/file-upload.service';
+import { PostsService } from 'src/app/services/posts/posts.service';
+import { UsersService } from 'src/app/services/users/users.service';
+
+
+
 
 @Component({
   selector: 'app-post-form',
@@ -40,14 +43,10 @@ export class PostFormComponent implements OnInit {
       let newPost:IPost ={ "community" : this.selectedOption! , "author" : localStorage.getItem("nickname")!, "file":rs.url, "title" : this.titlePost!  };
     
       this.postsService.createPost(newPost).subscribe( newPost => {
-          
         console.log(newPost);
-        
-
         return newPost;
       })
-      
-
+    
       return rs;} 
   );
   }
