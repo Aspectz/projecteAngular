@@ -19,6 +19,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommunityFormComponent } from './components/community-form/community-form.component';
 import { PostFormComponent } from './components/post-form/post-form.component';
 
+import { UserSettingsComponent } from './components/user-settings/user-settings.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+
 
 @NgModule({
   declarations: [
@@ -35,6 +38,8 @@ import { PostFormComponent } from './components/post-form/post-form.component';
     CommunityComponent,
     CommunityFormComponent,
     PostFormComponent,
+    UserProfileComponent,
+    UserSettingsComponent,
   ],
   imports: [
     BrowserModule,

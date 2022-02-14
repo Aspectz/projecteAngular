@@ -38,10 +38,12 @@ export class VotesService {
   vote(voteType:string,votedUser:boolean | null,idComm:string,idPost:string,idVote?:string,):Observable<boolean | null>{
     
     this.userVote=votedUser;
-    
-
+  
     let upvoteUrl=`${this.url}${idComm}/posts/${idPost}/votes`;
   
+    
+    
+
     let vote:IVote= { "user":localStorage.getItem("nickname")!.toString(),"type":voteType }
 
     

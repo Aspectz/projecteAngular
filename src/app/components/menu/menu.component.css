@@ -1,3 +1,4 @@
+
 .menu-bar {
     background-color: var(--bg-post);
     color: var(--primary-text);
@@ -10,7 +11,12 @@
   
     position: relative;
   }
-  
+  .text-color  *{
+    color: var(--primary-text);
+  }
+  .text-color h5{
+    color:var(--header-text-color);
+  }
   
   .custom-dropdown{
     background-color: var(--bg-post);

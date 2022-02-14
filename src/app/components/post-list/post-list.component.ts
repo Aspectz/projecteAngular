@@ -14,6 +14,8 @@ export class PostListComponent implements OnInit {
   @Output() error =new EventEmitter<any>();
   
 
+  
+
   numberComments:number=0;
 
   constructor() { }

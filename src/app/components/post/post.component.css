@@ -74,4 +74,8 @@
   color: var(--primary-text);
   outline: none;
 }
+.divPost a{
+  text-decoration: none;
+  color: var(--primary-text);
+}
 

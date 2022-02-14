@@ -42,3 +42,7 @@
     flex-direction: row;
     align-items: center;
 }
+.divPost a{
+    text-decoration: none;
+    color: var(--primary-text);
+  }

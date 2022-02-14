@@ -6,11 +6,11 @@
       <li *ngIf="!isLogged"><a id="register_link" [routerLink]="['register']"  routerLinkActive="active">Register</a></li>
       <li *ngIf="!isLogged"><a id="login_link" [routerLink]="['login']"   routerLinkActive="active">Log In</a></li>     
       <li *ngIf="isLogged">
-          <div ngbDropdown >
+          <div ngbDropdown  >
             <a  id="dropdownBasic1" ngbDropdownToggle>{{nickname}}</a>
-            <div ngbDropdownMenu  class="custom-dropdown">
+            <div ngbDropdownMenu  class="custom-dropdown text-colors">
               <h5 class="dropdown-header">User settings</h5>
-              <a ngbDropdownItem href="#/user/{{nickname}}" ><h6>Profile</h6></a>
+              <a ngbDropdownItem href="#/user/{{nickname}}" ><h6 class="text-color">Profile</h6></a>
               <a ngbDropdownItem href="#/settings" ><h6>Settings</h6></a>
               <hr class="dropdown-divider">
               <h5 class="dropdown-header">New</h5>

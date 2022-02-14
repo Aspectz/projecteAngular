@@ -9,5 +9,5 @@ export interface IPost {
     file:string,
     title:string,
     votes?:IVote[],
-
+    type:string
 }

@@ -6,6 +6,7 @@ body{
     --bg-post:white;
     --div-ext:#f0f0f0;
     --post-hover:rgba(0, 0, 0, 0.4);
+    --header-text-color:#6c757d;;
 
 }
 
@@ -16,6 +17,7 @@ body.dark-theme{
     --bg-post:#1a1a1b;
     --div-ext:#161617;
     --post-hover:rgba(255, 255, 255, 0.5);
+    --header-text-color:#93a0ac;
     
 }
 

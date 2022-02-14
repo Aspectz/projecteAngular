@@ -6,15 +6,17 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class FileUploadService {
-
-  baseApiUrl="https://api.cloudinary.com/v1_1/dtwtp2vwv/video/upload?upload_preset=tvjytipj";
+  
+  
+  
 
   constructor(private http:HttpClient) { }
 
-  upload(file:any):Observable<any> {
-  
+  upload(file:any,fileType:string):Observable<any> {
+    
     // Create form data
-    console.log(file);
+    let baseApiUrl=`https://api.cloudinary.com/v1_1/dtwtp2vwv/${fileType}/upload?upload_preset=tvjytipj`;
+    
     
     const formData = new FormData(); 
       
@@ -23,6 +25,6 @@ export class FileUploadService {
       
     // Make http post request over api
     // with formData as req
-    return this.http.post(this.baseApiUrl, formData)
+    return this.http.post(baseApiUrl, formData)
 }
 }

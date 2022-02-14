@@ -7,6 +7,9 @@ import { LoginComponent } from './components/login/login.component';
 import { PostFormComponent } from './components/post-form/post-form.component';
 import { PostComponent } from './components/post/post.component';
 import { RegisterComponent } from './components/register/register.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+
+import { UserSettingsComponent } from './components/user-settings/user-settings.component';
 
 const routes: Routes = [
   {path:'home',component:HomeComponent},
@@ -16,6 +19,8 @@ const routes: Routes = [
   {path:'communities/:idCom',component:CommunityComponent},
   {path:'create_post',component:PostFormComponent},
   {path:'create_community',component:CommunityFormComponent},
+  {path:'user/:idUser',component:UserProfileComponent},
+  {path:'settings',component:UserSettingsComponent},
   {path: '**', pathMatch: 'full', redirectTo: 'home'}
 
 ];

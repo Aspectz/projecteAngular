@@ -37,10 +37,15 @@ export class HomeComponent implements OnInit {
           this.postsService.getPosts(comm.name).subscribe(posts=>{
             this.posts_aux.push(posts);
             this.posts=this.posts_aux?.flat();
-              
+            
+            
           })  
         }
+        
+        
     });  
+    
+    
   }
   getError(error:any){
     

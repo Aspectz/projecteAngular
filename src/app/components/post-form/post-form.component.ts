@@ -33,14 +33,19 @@ export class PostFormComponent implements OnInit {
 
   getFile(file:any){
     this.file=file.target.files[0];
+    
   
   }
 
   submit(){
     
-    this.fileUploadService.upload(this.file).subscribe(
+    let fileType=this.file.type.split("/")[0];
+
+    this.fileUploadService.upload(this.file,fileType).subscribe(
      rs=> { 
-      let newPost:IPost ={ "community" : this.selectedOption! , "author" : localStorage.getItem("nickname")!, "file":rs.url, "title" : this.titlePost!  };
+       
+       
+      let newPost:IPost ={ "community" : this.selectedOption! , "author" : localStorage.getItem("nickname")!, "file":rs.url, "title" : this.titlePost! , "type":fileType };
     
       this.postsService.createPost(newPost).subscribe( newPost => {
         console.log(newPost);
