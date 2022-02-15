@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { IVote } from 'src/app/interfaces/i-vote';
+import { IGeneralVotes, IVote } from 'src/app/interfaces/i-vote';
 import { VotesService } from 'src/app/services/votes/votes.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { VotesService } from 'src/app/services/votes/votes.service';
   styleUrls: ['./vote.component.css'],
 })
 export class VoteComponent implements OnInit {
-  @Input() votes?: IVote[] | undefined;
+  @Input() votes?: IGeneralVotes | undefined;
   @Input() community: string | undefined;
   @Input() post: string | undefined;
 
@@ -20,15 +20,29 @@ export class VoteComponent implements OnInit {
   hasVoted: boolean | null = null;
 
   ngOnInit(): void {
+    console.log("VVotos"); 
+    console.log(this.votes);
     
-    
-    this.getVoteCount();
+
+    //this.getVoteCount();
     this.hasVoted = this.whathasVoted();
+    this.votesCount=this.votes?.totalVotes ? this.votes.totalVotes : 0;
+
+  console.log("votesvcount "+this.votesCount);
+  
+
+    this.voteService.hasVotedSubject.next(this.hasVoted);
+    this.voteService.hasVotedSubject.subscribe(newValue=>{      
+      this.hasVoted=newValue});
+    this.voteService.voteCountSubject.next(this.votesCount)
+    this.voteService.voteCountSubject.subscribe(newValue=>{
+      console.log("newValue "+newValue);
+      
+      this.votesCount=newValue;
+    })
   }
 
   whathasVoted(): boolean | null {
-    
-    
     let voted = null;
     if (this.votes != undefined) {
       Object.entries(this.votes).map((vote) => {
@@ -36,29 +50,39 @@ export class VoteComponent implements OnInit {
           voted = vote[1].type == 'upvote' ? true : false;
         }
       });
-    }
+    }    
     return voted;
   }
   //TODO: refrescar al logout
 
   getVoteCount() {
+    
+   
+    
     this.votesCount = 0;
     if (this.votes != undefined) {
+      
+      
       Object.entries(this.votes).map((vote) => {
-        this.votesCount =
-          vote[1].type == 'upvote'
-            ? (this.votesCount += 1)
-            : (this.votesCount -= 1);
+        if(vote[1].type)
+          this.votesCount =vote[1].type == 'upvote'? (this.votesCount += 1) : (this.votesCount -= 1);
       });
     }
+    
+    
+    
+    
+    
   }
   refreshVotes() {
     this.voteService.getVotes(this.community!, this.post!).subscribe((data) => {
+      
       this.votes = data;
-      this.whathasVoted();
+      console.log("newvotes",this.votes);
+      
       this.getVoteCount();
       
-      this.voteService.changeVoteCount(this.votesCount,this.community!,this.post!).subscribe(d => d);
+      
       return data;
     });
   }
@@ -68,18 +92,20 @@ export class VoteComponent implements OnInit {
   }
 
   getClassUp(): string {
+    //console.log("entra despres "+this.hasVoted);
+    
     return this.hasVoted ? 'upVote' : '';
   }
 
   voteTest(voteType: string) {
     if (localStorage.getItem('nickname')) {
       this.voteService
-        .vote(voteType, this.hasVoted, this.community!, this.post!)
+        .vote(voteType, this.hasVoted, this.community!, this.post!,this.votesCount)
         .subscribe((data) => {
-          this.hasVoted = data;
-          this.refreshVotes();
+          console.log("cambiao");
           
-          
+          //this.refreshVotes();
+              
           return data;
         });
     }else{

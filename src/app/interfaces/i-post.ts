@@ -1,5 +1,5 @@
 import { IComment } from "./i-comment";
-import { IVote } from "./i-vote";
+import { IGeneralVotes, IVote } from "./i-vote";
 
 export interface IPost {
     id?:string,
@@ -8,6 +8,6 @@ export interface IPost {
     community:string,
     file:string,
     title:string,
-    votes?:IVote[],
+    votes?:IGeneralVotes,
     type:string
 }

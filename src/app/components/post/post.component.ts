@@ -52,6 +52,8 @@ export class PostComponent implements OnInit {
           this.idComm=params['idCom'];
           this.id=params['id'];
           this.post=data;
+          
+          
           this.comments=this.post!.comments;
           this.comments= this.comments==undefined ? undefined : Object.values(this.comments);
           this.numberComments=this.comments ? Object.entries(this.comments).length : 0;

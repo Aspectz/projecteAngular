@@ -30,7 +30,7 @@ export class PostsService {
   }
 
   getPost(comm: string, post: string): Observable<IPost> {
-    console.log(comm, post);
+    
 
     return this.http.get<IPost>(`${this.url}${comm}/posts/${post}.json`).pipe(
       map((p) => {
