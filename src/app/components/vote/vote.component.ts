@@ -16,7 +16,6 @@ export class VoteComponent implements OnInit {
   constructor(private voteService: VotesService) {}
 
   votesCount: number = 0;
-  idVote: string | undefined;
 
   hasVoted: boolean | null = null;
 
@@ -35,7 +34,6 @@ export class VoteComponent implements OnInit {
       Object.entries(this.votes).map((vote) => {
         if (vote[1].user == localStorage.getItem('nickname')) {
           voted = vote[1].type == 'upvote' ? true : false;
-          this.idVote = vote[0];
         }
       });
     }
@@ -59,6 +57,8 @@ export class VoteComponent implements OnInit {
       this.votes = data;
       this.whathasVoted();
       this.getVoteCount();
+      
+      this.voteService.changeVoteCount(this.votesCount,this.community!,this.post!).subscribe(d => d);
       return data;
     });
   }
@@ -74,10 +74,12 @@ export class VoteComponent implements OnInit {
   voteTest(voteType: string) {
     if (localStorage.getItem('nickname')) {
       this.voteService
-        .vote(voteType, this.hasVoted, this.community!, this.post!, this.idVote)
+        .vote(voteType, this.hasVoted, this.community!, this.post!)
         .subscribe((data) => {
           this.hasVoted = data;
           this.refreshVotes();
+          
+          
           return data;
         });
     }else{
