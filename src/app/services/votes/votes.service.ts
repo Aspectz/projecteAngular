@@ -11,6 +11,7 @@ export class VotesService {
     'https://projectjs-b6bfe-default-rtdb.europe-west1.firebasedatabase.app/communities/';
 
   userVote: boolean | null;
+//FERO AMB OUTPUT I EVENT EMITTER
 
   hasVotedSubject = new BehaviorSubject<boolean | null>(null);
   voteCountSubject=new BehaviorSubject<number>(0);
