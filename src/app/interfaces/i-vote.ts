@@ -4,6 +4,6 @@ export interface IVote {
 }
 
 export interface IGeneralVotes{
-    votes:IVote[],
+    votes?:IVote[],
     totalVotes:number
 }

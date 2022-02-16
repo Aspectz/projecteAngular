@@ -24,11 +24,25 @@
   }
 
   .upVote{
+    /*transform: scale(2) rotate(-135deg);*/
+    animation: fadeUp 300ms  ;
     border-color:green;
   }
+  @keyframes fadeUp{
+    to{
+        transform: translateY(0) rotate(-135deg) scale(1.2);
+    }
+    } 
+    @keyframes fadeDown{
+      to{
+          transform: translateY(0) rotate(45deg) scale(0.5);
+      }
+  } 
 
   .downVote{
+    animation: fadeDown 300ms  ;
     border-color:red;
+
   }
   #container {
     position: fixed;

@@ -45,7 +45,7 @@ export class PostFormComponent implements OnInit {
      rs=> { 
        
        
-      let newPost:IPost ={ "community" : this.selectedOption! , "author" : localStorage.getItem("nickname")!, "file":rs.url, "title" : this.titlePost! , "type":fileType };
+      let newPost:IPost ={ "community" : this.selectedOption! , "author" : localStorage.getItem("nickname")!, "file":rs.url, "title" : this.titlePost! , "type":fileType ,"votes":{totalVotes:0}};
     
       this.postsService.createPost(newPost).subscribe( newPost => {
         console.log(newPost);

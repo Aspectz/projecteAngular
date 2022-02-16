@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { IPost } from 'src/app/interfaces/i-post';
-
+import { IGeneralVotes } from 'src/app/interfaces/i-vote';
 
 @Injectable({
   providedIn: 'root',
@@ -23,6 +23,8 @@ export class PostsService {
         map((communityArray) =>
           communityArray.map((post) => {
             post[1].id = post[0];
+            
+            
             return post[1];
           })
         )
