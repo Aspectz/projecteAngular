@@ -16,9 +16,6 @@ export class VotesService {
     this.userVote=null;
    }
 
-
-
-
   getVotes(idCom:string,idPost:string):Observable<IGeneralVotes>{
     return this.http.get<IGeneralVotes>(`${this.url}/${idCom}/posts/${idPost}/votes.json`).pipe(
       map(d=>{
