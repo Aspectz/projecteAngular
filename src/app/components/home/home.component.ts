@@ -1,3 +1,4 @@
+import { FunctionExpr } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ICommunity } from 'src/app/interfaces/i-community';
@@ -21,11 +22,13 @@ export class HomeComponent implements OnInit {
   hasError:boolean=false;
   errorMsg:string="";
 
+  filterText:string="";
   constructor(private communitiesService:CommunitiesService, private postsService:PostsService,private router:ActivatedRoute) { }
 
   ngOnInit(): void {
     
    this.getPosts();
+   this.postsService.searchEvent.subscribe(data=>this.filterText=data);
     
   }
   getPosts(){
@@ -37,12 +40,8 @@ export class HomeComponent implements OnInit {
           this.postsService.getPosts(comm.name).subscribe(posts=>{
             this.posts_aux.push(posts);
             this.posts=this.posts_aux?.flat();
-            
-            
           })  
         }
-        
-        
     });  
     
     
@@ -55,6 +54,18 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
       this.hasError=false;
     },5000);
+  }
+
+  order(){    
+    this.posts?.sort(function(a,b){
+      if(a.votes?.totalVotes!>b.votes?.totalVotes!){
+        return -1;
+      }
+      if(a.votes?.totalVotes!<b.votes?.totalVotes!){
+        return 1;
+      }
+      return 0;
+    });
     
     
   }

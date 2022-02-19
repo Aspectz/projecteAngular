@@ -21,8 +21,7 @@ export class PostListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    
-      this.numberComments=this.post?.comments ? Object.entries(this.post.comments!).length : 0;
+    this.numberComments=this.post?.comments ? Object.entries(this.post.comments!).length : 0;
     
     
   }

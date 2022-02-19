@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { IPost } from 'src/app/interfaces/i-post';
-import { IGeneralVotes } from 'src/app/interfaces/i-vote';
+
+
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,13 @@ export class PostsService {
   url =
     'https://projectjs-b6bfe-default-rtdb.europe-west1.firebasedatabase.app/communities/';
 
+  
+  searchEvent=new BehaviorSubject<string>("");
+
+
   constructor(private http: HttpClient) {}
+
+  
 
   getPosts(comm: string): Observable<IPost[]> {
     return this.http

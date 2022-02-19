@@ -45,4 +45,11 @@
 .divPost a{
     text-decoration: none;
     color: var(--primary-text);
-  }
+}
+.iconComment{
+    content: url("/assets/chat-bubble.png");
+    width: 30px;
+    padding-right: 5px;
+    height: 24px; 
+}
+

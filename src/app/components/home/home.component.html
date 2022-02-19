@@ -1,6 +1,7 @@
 <div class="mainContainer">
-  <div class="containerPosts">
-    <app-posts *ngFor="let post of posts"  [post]="post"  (error)="getError($event)" ></app-posts>
+  <div class="containerPosts" >
+    <button *ngIf="posts"  (click)="order()">Order</button>
+    <app-posts *ngFor="let post of posts | searchpipe:filterText  "  [post]="post"  (error)="getError($event)" ></app-posts>
     <app-toast *ngIf="hasError" [errorMsg]="errorMsg" ></app-toast>
   </div>
 </div>

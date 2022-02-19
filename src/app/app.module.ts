@@ -21,6 +21,7 @@ import { PostFormComponent } from './components/post-form/post-form.component';
 
 import { UserSettingsComponent } from './components/user-settings/user-settings.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { SearchpipePipe } from './pipes/searchpipe.pipe';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     PostFormComponent,
     UserProfileComponent,
     UserSettingsComponent,
+    SearchpipePipe,
   ],
   imports: [
     BrowserModule,
