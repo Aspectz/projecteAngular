@@ -22,10 +22,13 @@ export class CommunityComponent implements OnInit {
   errorMsg:string="";
 
    followsComm:boolean|undefined;
-
+   filterText:string="";
   constructor(private router:ActivatedRoute, private postsService: PostsService ,private userService: UsersService) { }
 
   ngOnInit(): void {
+    
+    this.postsService.searchEvent.subscribe(data=>this.filterText=data);
+
     this.router.params.subscribe( param=>{
         this.commName=param['idCom'];
         this.postsService.getPosts(param['idCom']).subscribe(posts=>{

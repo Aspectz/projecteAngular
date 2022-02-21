@@ -2,7 +2,7 @@
     <h2 class="logo">Proyecto</h2>
     <ul>
       <li><a id="home_link" [routerLink]="['home']" routerLinkActive="active">Home</a></li>
-      <input type="text" placeholder="Search.." id="searchbox"  [(ngModel)]="searchText" (input)="searchByPostTitle()"  />
+      <input type="text" placeholder="Search.." id="searchbox"  [(ngModel)]="searchText" value="{{searchText | lowercase }}"  (input)="searchByPostTitle()"  />
       <li *ngIf="!isLogged"><a id="register_link" [routerLink]="['register']"  routerLinkActive="active">Register</a></li>
       <li *ngIf="!isLogged"><a id="login_link" [routerLink]="['login']"   routerLinkActive="active">Log In</a></li>     
       <li *ngIf="isLogged">
