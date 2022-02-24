@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { IComment } from 'src/app/interfaces/i-comment';
 import { IPost } from 'src/app/interfaces/i-post';
 import { CommentsService } from 'src/app/services/comments/comments.service';
 import { LoginService } from 'src/app/services/login/login.service';
@@ -27,7 +28,7 @@ export class PostComponent implements OnInit {
 
   numberComments:number=0;
   comment :string='';
-  comments : any ;
+  comments? : IComment[] ;
   
   //error
   hasError:boolean=false;
@@ -39,11 +40,9 @@ export class PostComponent implements OnInit {
     this.login.logged.subscribe(log=>this.isLogged=log);
     
     this.commentService.newCommentSub.subscribe( data=>{ 
-      this.postService.getPost(this.idComm,this.id).subscribe(data=>{        
-        this.comments=data.comments;
-        this.comments=  this.comments==undefined ? undefined : Object.values(this.comments);
-        this.numberComments=this.comments ? Object.entries(this.comments).length : 0;
-      });
+      
+      this.comments?.push(data);
+      this.numberComments=this.comments ? Object.entries(this.comments).length : 0;
      return data;
     });
 
@@ -64,7 +63,7 @@ export class PostComponent implements OnInit {
 
   newComment(){
     
-    this.commentService.createComment(this.id,this.idComm,this.comment);
+    this.commentService.createComment(this.id,this.idComm,this.comment).subscribe(d=>d);
     this.comment="";
   }
 

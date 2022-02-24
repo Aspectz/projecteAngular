@@ -23,6 +23,7 @@ body.dark-theme{
 
 .bodybg{
     background-color: var(--bg-color);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 

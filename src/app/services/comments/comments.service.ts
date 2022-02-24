@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Subject } from 'rxjs';
+import { catchError, Observable, Subject } from 'rxjs';
 import { IComment } from 'src/app/interfaces/i-comment';
 
 
@@ -22,7 +22,7 @@ export class CommentsService {
     })
   };
 
-  createComment(idPost:string,idComm:string,comment:string){
+  createComment(idPost:string,idComm:string,comment:string):Observable<IComment>{
     
     
     let date = new Date();
@@ -41,7 +41,7 @@ export class CommentsService {
    
     
     
-    this.http.post(newURL,JSON.stringify(newComment)).subscribe(data=>{
+    return this.http.post<IComment>(newURL,JSON.stringify(newComment)).pipe(data=>{
       this.newCommentSub.next(newComment);
      return data});
     

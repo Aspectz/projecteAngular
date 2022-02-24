@@ -11,4 +11,15 @@
     flex-direction: column;
     width:640px;   
 }
+.iconFire{
+    content: url("/assets/fire.png");
+    width: 30px;
+    padding-right: 5px;
+    height: 24px; 
+}
+.divIconFire{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 

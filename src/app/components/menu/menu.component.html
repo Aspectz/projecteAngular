@@ -8,14 +8,10 @@
       <li *ngIf="isLogged">
           <div ngbDropdown  >
             <a  id="dropdownBasic1" ngbDropdownToggle>{{nickname}}</a>
-            <div ngbDropdownMenu  class="custom-dropdown text-colors">
-              <h5 class="dropdown-header">User settings</h5>
-              <a ngbDropdownItem href="#/user/{{nickname}}" ><h6 class="text-color">Profile</h6></a>
-              <a ngbDropdownItem href="#/settings" ><h6>Settings</h6></a>
-              <hr class="dropdown-divider">
+            <div ngbDropdownMenu  class="custom-dropdown text-color">
               <h5 class="dropdown-header">New</h5>
-              <a ngbDropdownItem id="create_post" href="#/create_post"><h6>Create Post</h6></a>
-              <a ngbDropdownItem id="create_community" href="#/create_community"><h6>Create Community</h6></a>
+              <a ngbDropdownItem id="create_post" [routerLink]="['/create_post']" ><h6>Create Post</h6></a>
+              <a ngbDropdownItem id="create_community"  [routerLink]="['/create_community']"><h6>Create Community</h6></a>
               <hr class="dropdown-divider">
               <h5 class="dropdown-header">Options</h5>
               <h6 ngbDropdownItem class="d-flex align-items-center">Dark Theme</h6>
