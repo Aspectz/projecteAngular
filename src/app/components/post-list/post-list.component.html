@@ -3,11 +3,14 @@
   <div class="divPost">
     <a
       style="text-decoration: none; color: white"
-      href="#/communities/{{ post?.community }}/posts/{{ post?.id }}"
+      [routerLink]="['/communities',post?.community,'posts',post?.id]"
+    
       ><div class="postAuthor">
         <h6>
           Posted by {{ post?.author }} in
-          <a class="hrefStyle" href="#/communities/{{post?.community}}">{{
+          <a class="hrefStyle" 
+          [routerLink]="['/communities/',post?.community]">
+          {{
             post?.community
           }}</a>
         </h6>

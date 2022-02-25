@@ -20,9 +20,9 @@ export class CommunityComponent implements OnInit {
   commName?:string|undefined;
   hasError:boolean=false;
   errorMsg:string="";
-
-   followsComm:boolean|undefined;
-   filterText:string="";
+  user?:IUserBD;
+  followsComm:boolean|undefined;
+  filterText:string="";
   constructor(private router:ActivatedRoute, private postsService: PostsService ,private userService: UsersService) { }
 
   ngOnInit(): void {
@@ -35,7 +35,9 @@ export class CommunityComponent implements OnInit {
           this.posts_aux.push(posts);
               this.posts=this.posts_aux?.flat();              
               this.userService.getUser(localStorage.getItem('localId')!).subscribe( user => {
-                this.followsComm=this.checkIfUserFollowsCommunity(user,param['idCom']);
+                this.user=user;
+                if(user)
+                  this.followsComm=this.checkIfUserFollowsCommunity(user,param['idCom']);
                 return user;}
               );
              
