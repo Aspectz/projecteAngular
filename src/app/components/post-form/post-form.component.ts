@@ -70,7 +70,7 @@ export class PostFormComponent implements OnInit {
           };
 
           this.postsService.createPost(newPost).subscribe((newPost) => {
-            console.log(newPost);
+            this.router.navigate([`/communities/${this.selectedOption}/posts/${newPost['name']}}`]);
             return newPost;
           });
 

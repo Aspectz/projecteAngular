@@ -50,8 +50,8 @@ export class PostsService {
     return this.http.get<IPost>(`${this.url}${comm}/posts/${post}.json`);
   }
 
-  createPost(post:IPost):Observable<IPost>{
-    return this.http.post<IPost>(`${this.url}/${post.community}/posts.json?auth=${localStorage.getItem("IDToken")}`,JSON.stringify(post));
+  createPost(post:IPost):Observable<{[key: string]:string}>{
+    return this.http.post<{[key: string]:string}>(`${this.url}/${post.community}/posts.json?auth=${localStorage.getItem("IDToken")}`,JSON.stringify(post));
   }
   deletePost(communityId:string,postId:string):Observable<any>{
 
