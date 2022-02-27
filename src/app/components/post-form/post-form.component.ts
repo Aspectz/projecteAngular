@@ -57,7 +57,9 @@ export class PostFormComponent implements OnInit {
 
   submit() {
     if (this.isLogged) {
-      if (this.file) {
+
+      
+      if (this.file && this.titlePost && this.selectedOption) {
         let fileType = this.file.type.split('/')[0];
         this.fileUploadService.upload(this.file, fileType).subscribe((rs) => {
           let newPost: IPost = {

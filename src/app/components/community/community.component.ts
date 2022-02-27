@@ -46,22 +46,27 @@ export class CommunityComponent implements OnInit {
       this.communityService
         .getCommunityByName(this.commName!)
         .subscribe((comm) => {
-          if (comm.posts)
+          if (comm) {
+            if(comm.posts){
             this.posts = this.postsService.getTransformedPosts(comm.posts!);
-          this.userService
-            .getUser(localStorage.getItem('localId')!)
-            .subscribe((user) => {
-              this.user = user;
-              if (user)
-                if (user.nickname == comm.author) this.isAuthor = true;
-                else {
-                  this.followsComm = this.checkIfUserFollowsCommunity(
-                    user,
-                    param['idCom']
-                  );
-                }
-              return user;
-            });
+            this.userService
+              .getUser(localStorage.getItem('localId')!)
+              .subscribe((user) => {
+                this.user = user;
+                if (user)
+                  if (user.nickname == comm.author) this.isAuthor = true;
+                  else {
+                    this.followsComm = this.checkIfUserFollowsCommunity(
+                      user,
+                      param['idCom']
+                    );
+                  }
+                return user;
+              });
+            }
+          }else{
+            this.commName=undefined;
+          }
         });
     });
   }
