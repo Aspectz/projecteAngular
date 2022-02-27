@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
 import { IComment } from 'src/app/interfaces/i-comment';
 import { IPost } from 'src/app/interfaces/i-post';
 import { CommentsService } from 'src/app/services/comments/comments.service';
@@ -28,7 +29,7 @@ export class PostComponent implements OnInit {
 
   numberComments:number=0;
   comment :string='';
-  comments : IComment[]=[] ;
+  comments : IComment[]=[];
   
   isAuthor:boolean=false;
   //error
@@ -88,15 +89,13 @@ export class PostComponent implements OnInit {
       this.postId=idPost;
       this.post=data;
       this.isAuthor=this.post?.author==localStorage.getItem('nickname') ? true : false;
-      this.comments=this.post?.comments!;
+      this.comments=this.post?.comments! ?  this.post?.comments!: [];
 
-      if(this.comments){
         this.comments=Object.entries(this.comments).map(cmm=>{
           cmm[1].id=cmm[0];
           return cmm[1];
           }
         )
-      }
       this.numberComments=this.comments ? Object.entries(this.comments).length : 0;
     });
   }
