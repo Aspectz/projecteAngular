@@ -35,6 +35,6 @@
   </div>
   <button (click)="submit()" >SUBMIT</button>
 </form>
-  
+<app-toast *ngIf="hasError" [errorMsg]="errorMsg"></app-toast>
 
 </div>

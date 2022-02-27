@@ -22,7 +22,7 @@ export class CommentsService {
     })
   };
 
-  createComment(idPost:string,idComm:string,comment:string):Observable<IComment>{
+  createComment(idPost:string,idComm:string,comment:IComment):Observable<{[key: string]:string}>{
     
     
     let date = new Date();
@@ -31,23 +31,16 @@ export class CommentsService {
         date.getMonth() + 1,
         date.getFullYear(),
       ].join("/");
-      console.log(idPost,idComm,comment);
-      
       let newURL=`${this.url}/${idComm}/posts/${idPost}/comments.json?auth=${localStorage.getItem("IDToken")}`;
     
+      comment.date=dateFormat;
+      
+    return this.http.post<{[key: string]:string}>(newURL,JSON.stringify(comment));
+    
+  }
 
-    let newComment : IComment= { "comment" : comment , "date":dateFormat,"user":localStorage.getItem("nickname")!.toString() }
-   
-   
-    
-    
-    return this.http.post<IComment>(newURL,JSON.stringify(newComment)).pipe(data=>{
-      this.newCommentSub.next(newComment);
-     return data});
-    
-    
-  
-
+  deleteComment(idCom:string,idPost:string,idComment:string):Observable<any>{
+    return this.http.delete(`${this.url}/${idCom}/posts/${idPost}/comments/${idComment}.json?auth=${localStorage.getItem('IDToken')}`);
   }
 
 }

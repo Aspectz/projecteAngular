@@ -19,8 +19,16 @@ export class PostsService {
   constructor(private http: HttpClient) {}
 
   
+  getTransformedPosts(posts:IPost[]):IPost[]{
+   return Object.entries(posts).map((communityObj) => {
+    communityObj[1].id=communityObj[0];
+    return communityObj[1];
+   });
+  }
 
-  getPosts(comm: string): Observable<IPost[]> {
+
+  //Its not necessary to do 2 calls to the API if I've alreadygot the full community before.
+ /* getPosts(comm: string): Observable<IPost[]> {
     return this.http
       .get<{ [key: string]: IPost }>(`${this.url}${comm}.json`)
       .pipe(
@@ -36,19 +44,18 @@ export class PostsService {
           })
         )
       );
-  }
+  }*/
 
   getPost(comm: string, post: string): Observable<IPost> {
-    
-
-    return this.http.get<IPost>(`${this.url}${comm}/posts/${post}.json`).pipe(
-      map((p) => {
-        return p;
-      })
-    );
+    return this.http.get<IPost>(`${this.url}${comm}/posts/${post}.json`);
   }
 
   createPost(post:IPost):Observable<IPost>{
     return this.http.post<IPost>(`${this.url}/${post.community}/posts.json?auth=${localStorage.getItem("IDToken")}`,JSON.stringify(post));
+  }
+  deletePost(communityId:string,postId:string):Observable<any>{
+
+    let deleteUrl=`${this.url}${communityId}/posts/${postId}.json?auth=${localStorage.getItem('IDToken')}`;
+    return this.http.delete(deleteUrl);
   }
 }

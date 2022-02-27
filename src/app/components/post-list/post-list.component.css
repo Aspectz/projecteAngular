@@ -20,6 +20,8 @@
     padding: 10px;
 }
 .postAuthor{
+    display: flex;
+    justify-content: space-between;
     color:#77797a;
 }
 .postTitle{   

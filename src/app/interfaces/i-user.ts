@@ -1,4 +1,3 @@
-import { IComment } from "./i-comment";
 import { ICommunity } from "./i-community";
 
 export interface IUserFirebaseAuth {
@@ -8,5 +7,6 @@ export interface IUserFirebaseAuth {
 
 export interface IUserBD{
     nickname:string,
-    communities?:ICommunity[];
+    communities?:string[],
+    id?:string;
 }

@@ -3,7 +3,7 @@
     <div class="divExt" >
       <!-- USING NGIF to delay the inicialization of vote components// EL ngIf detecta el canvi de la variable i ho enseña quan estiga carrega-->
       <!-- revisar //  if the post doesnt have any votes it wont show the vote options-->
-      <app-vote    [votes]="post?.votes" [community]="idComm" [post]="id" (sendError)="getError($event)"></app-vote>
+      <app-vote    [votes]="post?.votes" [community]="idComm" [post]="postId" (sendError)="getError($event)"></app-vote>
       <div class="divPost">
         <div class="postAuthor">
           <h6>
@@ -12,6 +12,7 @@
               post?.community
             }}</a>
           </h6>
+          <i class="trashIcon" *ngIf="isAuthor && isLogged" (click)="deletePost()" ></i>
         </div>
         <div class="postTitle">
           <h3 style="font-size: 1.17em">{{ post?.title }}</h3>
@@ -38,10 +39,10 @@
         <button class="btn btn-primary"  style="margin-top: 1em;" (click)="newComment()">Comment</button>
       </div>
 
-      <div *ngIf="comments != undefined" class="divComments">
+      <div *ngIf="numberComments>0" class="divComments">
         <app-comments
           *ngFor="let item of comments"
-          [comments]="item"
+          [comments]="item" [idCommunity]="idComm" [idPost]="postId" (deleteCommentEmitter)="getPost(idComm,postId)"
         ></app-comments>
       </div>
   </div>

@@ -1,9 +1,30 @@
 <div class="mainContainer">
-    <div class="containerPosts" *ngIf="posts">
-
-
-      <div class="d-flex   justify-content-between" *ngIf="user" ><h1 *ngIf="commName">{{commName}}</h1><button class="btn divExt" (click)="followOrUnfollow()" >{{followsComm ? "Unfollow": "Follow"}}</button></div>
-      <app-posts *ngFor="let post of posts | searchpipe:filterText"  [post]="post"  (error)="getError($event)" ></app-posts>
-      <app-toast *ngIf="hasError" [errorMsg]="errorMsg" ></app-toast>
+  <div class="containerPosts">
+    <div class="d-flex justify-content-between" *ngIf="user">
+      <h1 *ngIf="commName" class="textColor">{{ commName }}</h1>
+      <button *ngIf="isAuthor && isLogged" (click)="deleteCommunity()" class="btn divExt">
+        Delete community
+      </button>
+      <button
+        *ngIf="followsComm != undefined && isLogged"
+        class="btn divExt"
+        (click)="followOrUnfollow()"
+      >
+        {{ followsComm ? "Unfollow" : "Follow" }}
+      </button>
+    </div>
+    <div>
+      <ng-template [ngIf]="posts" [ngIfElse]="notpost">
+        <app-posts
+          *ngFor="let post of posts | searchpipe: filterText"
+          [post]="post"
+          (error)="getError($event)"
+        ></app-posts>
+      </ng-template>
+      <ng-template #notpost >
+        <button class="btn divExt w-100" [routerLink]="['/create_post']" >Create a new post</button>
+      </ng-template>
+      <app-toast *ngIf="hasError" [errorMsg]="errorMsg"></app-toast>
     </div>
   </div>
+</div>

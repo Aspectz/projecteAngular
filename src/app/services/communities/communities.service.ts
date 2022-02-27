@@ -20,11 +20,14 @@ export class CommunitiesService {
       return resp.communities}));
    }
    getCommunityByName(name:string):Observable<ICommunity>{
-     return this.http.get<ICommunity>(`${this.urlCommunity}/${name}.json`).pipe(map(resp=>resp));
+     return this.http.get<ICommunity>(`${this.urlCommunity}/${name}.json`);
   }
 
   createCommunity(community:ICommunity):Observable<ICommunity>{
     return this.http.put<ICommunity>(`${this.urlCommunity}/${community.name}.json?auth=${localStorage.getItem('IDToken')}`,JSON.stringify(community));
+  }
+  deleteCommunity(idCommunity:string):Observable<any>{
+    return this.http.delete(`${this.urlCommunity}/${idCommunity}.json?auth=${localStorage.getItem('IDToken')}`);
   }
 
   

@@ -35,6 +35,8 @@
   padding: 10px;
 }
 .postAuthor {
+  display: flex;
+  justify-content: space-between;
   color: #77797a;
 }
 .postTitle {
@@ -84,4 +86,9 @@
   padding-right: 5px;
   height: 24px; 
 }
-
+.trashIcon{
+  content: url("/assets/eliminar.png");
+  width: 30px;
+  padding-right: 5px;
+  height: 24px; 
+}

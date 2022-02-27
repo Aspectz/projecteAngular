@@ -3,4 +3,5 @@
     <p class="text-danger" *ngIf="communityForm.get('communityTitle')!.invalid && communityForm.get('communityTitle')!.touched "><strong>Name requerido</strong></p>
     <p class="text-danger" *ngIf="communityExists "><strong>Ya existe</strong></p>  
     <input type="submit" value="submit" (click)="checkCommunityName()"  [disabled]="!communityForm.valid" >Submit
+    <app-toast *ngIf="hasError" [errorMsg]="errorMsg"></app-toast>
 </form>

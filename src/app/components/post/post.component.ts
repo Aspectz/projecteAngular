@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IComment } from 'src/app/interfaces/i-comment';
 import { IPost } from 'src/app/interfaces/i-post';
 import { CommentsService } from 'src/app/services/comments/comments.service';
@@ -17,54 +17,51 @@ import { PostsService } from 'src/app/services/posts/posts.service';
 })
 export class PostComponent implements OnInit {
 
-  constructor(private router : ActivatedRoute,private postService:PostsService,private login: LoginService,private commentService : CommentsService) { }
+  constructor(private router : ActivatedRoute,private postService:PostsService,private login: LoginService,private commentService : CommentsService,private navigateRouter:Router) { }
 
   isLogged:boolean=false;
 
   post :IPost | undefined;
 
   idComm:string="";
-  id:string="";
+  postId:string="";
 
   numberComments:number=0;
   comment :string='';
-  comments? : IComment[] ;
+  comments : IComment[]=[] ;
   
+  isAuthor:boolean=false;
   //error
   hasError:boolean=false;
   errorMsg:string="";
 
   ngOnInit(): void {
 
-    this.isLogged=this.login.isLogged();
-    this.login.logged.subscribe(log=>this.isLogged=log);
     
+    this.isLogged=this.login.isLogged();
+
+    this.login.logged.subscribe(log=>this.isLogged=log);
+
+
     this.commentService.newCommentSub.subscribe( data=>{ 
-      
-      this.comments?.push(data);
+      this.comments.push(data);
       this.numberComments=this.comments ? Object.entries(this.comments).length : 0;
      return data;
     });
 
     this.router.params.subscribe(params=>{
-        this.postService.getPost(params['idCom'],params['id']).subscribe(data=>{ 
-          this.idComm=params['idCom'];
-          this.id=params['id'];
-          this.post=data;
-          
-          
-          this.comments=this.post!.comments;
-          this.comments= this.comments==undefined ? undefined : Object.values(this.comments);
-          this.numberComments=this.comments ? Object.entries(this.comments).length : 0;
-        });
+        this.getPost(params['idCom'],params['id']);
     });
   }
 
 
   newComment(){
-    
-    this.commentService.createComment(this.id,this.idComm,this.comment).subscribe(d=>d);
-    this.comment="";
+    let newComment : IComment= { "comment" : this.comment ,"user":localStorage.getItem("nickname")!.toString() }
+    this.commentService.createComment(this.postId,this.idComm,newComment).subscribe(d=>{
+      newComment.id=d['name']
+      this.commentService.newCommentSub.next(newComment);
+      this.comment="";
+    })
   }
 
   getError(error:any){
@@ -75,6 +72,33 @@ export class PostComponent implements OnInit {
       this.hasError=false;
     },5000);
 
+  }
+  deletePost(){
+
+    if(confirm("Are you sure do u want to delete this post?")){
+      this.postService.deletePost(this.post!.community,this.postId).subscribe(d=>
+        this.navigateRouter.navigate([`/communities/${this.post?.community}`])  
+      );
+    }
+   
+  }
+  getPost(idCom:string,idPost:string){
+    this.postService.getPost(idCom,idPost).subscribe(data=>{       
+      this.idComm=idCom;
+      this.postId=idPost;
+      this.post=data;
+      this.isAuthor=this.post?.author==localStorage.getItem('nickname') ? true : false;
+      this.comments=this.post?.comments!;
+
+      if(this.comments){
+        this.comments=Object.entries(this.comments).map(cmm=>{
+          cmm[1].id=cmm[0];
+          return cmm[1];
+          }
+        )
+      }
+      this.numberComments=this.comments ? Object.entries(this.comments).length : 0;
+    });
   }
 
 

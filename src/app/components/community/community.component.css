@@ -11,12 +11,16 @@
     flex-direction: column;
     width:640px;   
 }
+.textColor{
+    color: var(--primary-text);
+}
 .divExt {
     display: flex;
-    color: #77797a;
+    color: var(--primary-text);
     margin: 10px 0px 10px 0px;
-    background-color: #161617;
+    background-color: var(--bg-post);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 3px;
+    justify-content: center;
     max-width: 640px;
   }

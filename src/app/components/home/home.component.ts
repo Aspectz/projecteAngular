@@ -35,12 +35,10 @@ export class HomeComponent implements OnInit {
     this.communitiesService.getCommunities().subscribe(datos=>{
       this.communities=Object.values(datos);
       for(let comm of this.communities){
-        
-        if(comm.posts)
-          this.postsService.getPosts(comm.name).subscribe(posts=>{
-            this.posts_aux.push(posts);
-            this.posts=this.posts_aux?.flat();
-          })  
+        if(comm.posts){
+          this.posts_aux.push(this.postsService.getTransformedPosts(comm.posts));
+          this.posts=this.posts_aux?.flat();
+        }
         }
     });  
     

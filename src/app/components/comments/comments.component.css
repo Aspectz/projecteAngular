@@ -5,3 +5,10 @@
   .textColor{
     color:var(--primary-text);
   }
+  .trashIcon{
+    content: url("/assets/eliminar.png");
+    width: 30px;
+    padding-right: 5px;
+    height: 24px; 
+  }
+  

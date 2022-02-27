@@ -1,8 +1,13 @@
 <div>
-    <div style="padding: 10px;">
-        <span class="textColor" >{{comments?.user}}</span>
-        <span class="spanDate">{{comments?.date}}</span>
-        <p style="margin-left: 1%;margin-top: 1%;" class="textColor">{{comments?.comment}}</p>
+  <div style="padding: 10px">
+    <div class="d-flex">
+      <span class="textColor">{{ comments?.user }}</span>
+      <span class="spanDate flex-grow-1">{{ comments?.date }}</span>
+      <i class="trashIcon"  (click)="deleteComment()"></i>
     </div>
+    <p style="margin-left: 1%; margin-top: 1%" class="textColor">
+      {{ comments?.comment }}
+    </p>
+  </div>
 </div>
 <!--<p>{{comments | json}}</p>>-->

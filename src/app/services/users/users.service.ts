@@ -22,8 +22,9 @@ export class UsersService {
     return this.http.get<{  [key:string]: IUserBD}>(this.url+".json")
     .pipe(
       map(  userObject=> Object.entries(userObject)),
-      map( userArray=> userArray.map(s=>  {  
-        return s[1]}   
+      map( userArray=> userArray.map(user=>  {  
+        user[1].id=user[0];
+        return user[1]}   
         ))
       );
   }
@@ -37,7 +38,7 @@ export class UsersService {
   }
 
   getUser(id:string):Observable<IUserBD>{
-    return this.http.get<IUserBD>(`${this.url}/${id}.json`).pipe( map( user => user));
+    return this.http.get<IUserBD>(`${this.url}/${id}.json`);
   }
   createUser(user:IUserBD,id:string){
     return this.http.put<IUserBD>(`${this.url}/${id}.json?auth=${localStorage.getItem("IDToken")}`,JSON.stringify(user));
